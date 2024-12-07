@@ -9,7 +9,7 @@
 | 1          | 20220950 | 2330973 | Senuli Laknara Wickramage       |
 | 2          | 20230903 | 2330903 | Himansa Wathsiluni Jayasuriya   |
 | 3          | 20221812 | 2331419 | Moderage Ethan Christoff Perera |
-| 4          | 20232429 | 2330893 | Mavinu Induwara Gunaratne       |
+| 4          | 20232429 | 2330893 | Mevinu Induwara Gunaratne       |
 
 ## Submission etiquette
 
