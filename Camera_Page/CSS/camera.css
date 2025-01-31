@@ -36,6 +36,19 @@ body {
     transition: color 0.3s ease;
   }
 
+/* Styling for login icon */
+.login-icon {
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    margin-right: auto; /* Pushes nav to the center */
+    transition: color 0.3s ease;
+}
+
+.login-icon:hover {
+    color: #b0c4de;
+}
+
   header nav a:hover {
     color: #b0c4de; /* Light steel blue on hover */
   }
@@ -186,6 +199,30 @@ body {
     }
   }
 
+/*Sign In Button*/
+.gradient-btn {
+    padding: 10px 20px; /* More compact size */
+    font-size: 14px; /* Matches navigation scale */
+    color: white;
+    border: none;
+    border-radius: 5px; /* Matches site's rounded corners */
+    background: linear-gradient(45deg, #003366, #0077b6, #00a2ff, #0077b6, #003366); /* Blue spectrum from site's palette */
+    background-size: 300% 300%;
+    cursor: pointer;
+    transition: all 0.4s ease; /* Matches other transitions */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Consistent with header shadow */
+    margin-left: 10px; /* Spacing from other nav items */
+}
+
+.gradient-btn:hover {
+    background-position: 100% 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+    transform: translateY(-1px); /* Subtle lift effect */
+}
+
+.gradient-btn:active {
+    transform: scale(0.98) translateY(0);
+}
   /* Media Queries for Mobile Responsiveness */
   @media (max-width: 768px) {
     header {
@@ -193,7 +230,7 @@ body {
     }
 
     header .title {
-      font-size: 18px; /* Smaller font size for smaller screens */
+      font-size: 15px; /* Smaller font size for smaller screens */
     }
 
     header nav {
@@ -225,5 +262,11 @@ body {
       width: 1.8rem; /* Smaller icons for smaller screens */
       height: 1.8rem; /* Smaller icons for smaller screens */
       font-size: 1rem; /* Smaller icon size for smaller screens */
+    }
+
+    .gradient-btn {
+        padding: 8px 15px;
+        font-size: 12px;
+        margin-left: 5px;
     }
   }
