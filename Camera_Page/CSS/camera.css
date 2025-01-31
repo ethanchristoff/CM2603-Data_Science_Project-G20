@@ -7,7 +7,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
   }
-  
+
   header {
     background-color: #003366; /* Dark blue */
     color: white;
@@ -18,28 +18,55 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     animation: fadeInDown 1s ease-in-out;
   }
-  
+
   header .title {
     font-size: 20px; /* Smaller font size for mobile */
     font-weight: bold;
   }
-  
+
   header nav {
     display: flex;
     gap: 15px; /* Reduced gap for mobile */
   }
-  
+
   header nav a {
     color: white;
     text-decoration: none;
     font-size: 12px; /* Smaller font size for mobile */
     transition: color 0.3s ease;
   }
-  
+
   header nav a:hover {
     color: #b0c4de; /* Light steel blue on hover */
   }
-  
+
+  /* Sliding News Bar */
+  .news-bar {
+    background-color: #0077b6; /* Medium blue */
+    color: white;
+    padding: 8px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .news-bar p {
+    display: inline-block;
+    padding-left: 100%; /* Start off-screen */
+    animation: slide 20s linear infinite;
+    margin: 0;
+    font-size: 14px;
+  }
+
+  @keyframes slide {
+    0% {
+      transform: translateX(100%); /* Start from the right */
+    }
+    100% {
+      transform: translateX(-100%); /* Move to the left */
+    }
+  }
+
   main {
     flex: 1;
     display: flex;
@@ -47,7 +74,7 @@ body {
     align-items: center;
     padding: 15px; /* Reduced padding for mobile */
   }
-  
+
   .camera-feed {
     width: 90%; /* Wider on mobile */
     max-width: 600px;
@@ -62,7 +89,7 @@ body {
     color: #003366; /* Dark blue text */
     animation: scaleIn 1.5s ease-in-out;
   }
-  
+
   .footer {
     padding: 15px; /* Reduced padding for mobile */
     background: #003366; /* Dark blue background */
@@ -72,12 +99,12 @@ body {
     align-items: center;
     font-size: 12px;
   }
-  
+
   .footer div {
     text-align: center;
     margin-bottom: 10px; /* Space between footer sections */
   }
-  
+
   .footer div h3 {
     color: #fff;
     font-size: 16px; /* Smaller font size for mobile */
@@ -86,17 +113,17 @@ body {
     margin-bottom: 10px; /* Reduced margin */
     letter-spacing: 1px;
   }
-  
+
   .col-2 {
     color: #fff;
   }
-  
+
   .social-icons {
     display: flex;
     justify-content: center;
     gap: 10px; /* Space between icons */
   }
-  
+
   .social-icons a {
     text-decoration: none;
     display: inline-flex;
@@ -111,20 +138,20 @@ body {
     transition: 0.3s ease;
     color: #0077b6; /* Medium blue color */
   }
-  
+
   .social-icons a:hover {
     color: #fff; /* White on hover */
     background-color: #0077b6; /* Medium blue background on hover */
     transform: scale(1.1); /* Slight scale effect */
     box-shadow: 0 0 10px #0077b6; /* Subtle glow effect */
   }
-  
+
   .social-icons a:hover i {
     color: #fff; /* White on hover */
     transition: color 0.3s ease;
     cursor: pointer;
   }
-  
+
   /* Animations */
   @keyframes fadeInDown {
     0% {
@@ -136,7 +163,7 @@ body {
       transform: translateY(0);
     }
   }
-  
+
   @keyframes fadeInUp {
     0% {
       opacity: 0;
@@ -147,7 +174,7 @@ body {
       transform: translateY(0);
     }
   }
-  
+
   @keyframes scaleIn {
     0% {
       transform: scale(0.8);
@@ -158,34 +185,38 @@ body {
       opacity: 1;
     }
   }
-  
+
   /* Media Queries for Mobile Responsiveness */
   @media (max-width: 768px) {
     header {
       padding: 10px 15px; /* Further reduced padding for smaller screens */
     }
-  
+
     header .title {
       font-size: 18px; /* Smaller font size for smaller screens */
     }
-  
+
     header nav {
       gap: 10px; /* Reduced gap for smaller screens */
     }
-  
+
     header nav a {
       font-size: 10px; /* Smaller font size for smaller screens */
     }
-  
+
+    .news-bar p {
+      font-size: 12px; /* Smaller font size for smaller screens */
+    }
+
     .camera-feed {
       height: 250px; /* Smaller height for smaller screens */
       font-size: 16px; /* Smaller font size for smaller screens */
     }
-  
+
     .footer {
       padding: 10px; /* Further reduced padding for smaller screens */
     }
-  
+
     .footer div h3 {
       font-size: 14px; /* Smaller font size for smaller screens */
     }
