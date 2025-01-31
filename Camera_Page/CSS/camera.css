@@ -1,0 +1,198 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff; /* Light blue background */
+    color: #003366; /* Dark blue text */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  header {
+    background-color: #003366; /* Dark blue */
+    color: white;
+    padding: 15px 20px; /* Reduced padding for mobile */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeInDown 1s ease-in-out;
+  }
+  
+  header .title {
+    font-size: 20px; /* Smaller font size for mobile */
+    font-weight: bold;
+  }
+  
+  header nav {
+    display: flex;
+    gap: 15px; /* Reduced gap for mobile */
+  }
+  
+  header nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 12px; /* Smaller font size for mobile */
+    transition: color 0.3s ease;
+  }
+  
+  header nav a:hover {
+    color: #b0c4de; /* Light steel blue on hover */
+  }
+  
+  main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px; /* Reduced padding for mobile */
+  }
+  
+  .camera-feed {
+    width: 90%; /* Wider on mobile */
+    max-width: 600px;
+    height: 300px; /* Smaller height for mobile */
+    background-color: #b0c4de; /* Light steel blue */
+    border: 5px solid #0077b6; /* Medium blue */
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px; /* Smaller font size for mobile */
+    color: #003366; /* Dark blue text */
+    animation: scaleIn 1.5s ease-in-out;
+  }
+  
+  .footer {
+    padding: 15px; /* Reduced padding for mobile */
+    background: #003366; /* Dark blue background */
+    display: flex;
+    flex-direction: column; /* Stack footer content vertically on mobile */
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+  }
+  
+  .footer div {
+    text-align: center;
+    margin-bottom: 10px; /* Space between footer sections */
+  }
+  
+  .footer div h3 {
+    color: #fff;
+    font-size: 16px; /* Smaller font size for mobile */
+    font-style: italic;
+    font-weight: bold;
+    margin-bottom: 10px; /* Reduced margin */
+    letter-spacing: 1px;
+  }
+  
+  .col-2 {
+    color: #fff;
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Space between icons */
+  }
+  
+  .social-icons a {
+    text-decoration: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem; /* Smaller icons for mobile */
+    height: 2rem; /* Smaller icons for mobile */
+    background-color: transparent;
+    border: 0.15rem solid #0077b6; /* Medium blue border */
+    font-size: 1.2rem; /* Smaller icon size for mobile */
+    border-radius: 50%;
+    transition: 0.3s ease;
+    color: #0077b6; /* Medium blue color */
+  }
+  
+  .social-icons a:hover {
+    color: #fff; /* White on hover */
+    background-color: #0077b6; /* Medium blue background on hover */
+    transform: scale(1.1); /* Slight scale effect */
+    box-shadow: 0 0 10px #0077b6; /* Subtle glow effect */
+  }
+  
+  .social-icons a:hover i {
+    color: #fff; /* White on hover */
+    transition: color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  /* Animations */
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes scaleIn {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* Media Queries for Mobile Responsiveness */
+  @media (max-width: 768px) {
+    header {
+      padding: 10px 15px; /* Further reduced padding for smaller screens */
+    }
+  
+    header .title {
+      font-size: 18px; /* Smaller font size for smaller screens */
+    }
+  
+    header nav {
+      gap: 10px; /* Reduced gap for smaller screens */
+    }
+  
+    header nav a {
+      font-size: 10px; /* Smaller font size for smaller screens */
+    }
+  
+    .camera-feed {
+      height: 250px; /* Smaller height for smaller screens */
+      font-size: 16px; /* Smaller font size for smaller screens */
+    }
+  
+    .footer {
+      padding: 10px; /* Further reduced padding for smaller screens */
+    }
+  
+    .footer div h3 {
+      font-size: 14px; /* Smaller font size for smaller screens */
+    }
+
+    .social-icons a {
+      width: 1.8rem; /* Smaller icons for smaller screens */
+      height: 1.8rem; /* Smaller icons for smaller screens */
+      font-size: 1rem; /* Smaller icon size for smaller screens */
+    }
+  }
