@@ -3,7 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.12 (Pose_Estimation)" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="Python 3.12 (Pose_Estimation)" project-jdk-type="Python SDK">
-    <output url="file://$PROJECT_DIR$/out" />
-  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12 (CM2603-Data_Science_Project-G20)" project-jdk-type="Python SDK" />
 </project>
