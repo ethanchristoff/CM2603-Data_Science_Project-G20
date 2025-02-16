@@ -223,6 +223,70 @@ body {
 .gradient-btn:active {
     transform: scale(0.98) translateY(0);
 }
+
+/* Styles for past recordings section */
+.recordings-section {
+  margin: 20px auto;
+  text-align: center;
+  max-width: 800px;
+}
+
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slider video {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.add-video-btn {
+  padding: 10px 20px;
+  font-size: 14px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(45deg, #003366, #0077b6, #00a2ff, #0077b6, #003366);
+  background-size: 300% 300%;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 15px;
+}
+
+.add-video-btn:hover {
+  background-position: 100% 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+.add-video-btn:active {
+  transform: scale(0.98) translateY(0);
+}
+
+
   /* Media Queries for Mobile Responsiveness */
   @media (max-width: 768px) {
     header {
