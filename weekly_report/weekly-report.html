@@ -19,9 +19,41 @@
     <script src="weekly-report.js" defer></script>
     <link rel="stylesheet" href="weekly-report.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  <!-- Chart.js -->
+    <!--    DO not add these styles in your code-->
     <style>
         .chart-container {
             height: 300px;
+        }
+
+        /* Previous styles remain the same */
+        @media print {
+            .navbar, .sidebar, .no-print {
+                display: none !important;
+            }
+            .main-content {
+                margin-left: 0 !important;
+                margin-top: 0 !important;
+            }
+            .card {
+                break-inside: avoid;
+            }
+        }
+
+        .print-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: var(--healthcare-blue-light) !important;
+            border-color: var(--healthcare-blue-light) !important;
+        }
+
+        .print-button:hover {
+            background-color: var(--healthcare-blue) !important;
+            border-color: var(--healthcare-blue) !important;
         }
     </style>
 </head>
@@ -86,6 +118,11 @@
 
     <!-- Main Content -->
     <main class="main-content" id="mainContent">
+        <!-- Print Button -->
+        <button class="btn btn-primary print-button no-print" onclick="printReport()">
+            <i class="bi bi-printer me-2"></i>Print Weekly Report
+        </button>
+
         <!-- Stats Cards -->
         <div class="row g-4 mb-4">
             <div class="col-md-6 col-xl-3">
