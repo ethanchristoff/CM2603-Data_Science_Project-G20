@@ -1,210 +1,79 @@
+:root {
+    --healthcare-blue: #2c5282;
+    --healthcare-blue-dark: #234876;
+    --healthcare-blue-light: #3182ce;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 20px;
+    background-color: #f8f9fa;
 }
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 0.5fr);
-    gap: 20px;
-    width: 80%;
-    margin: auto;
+
+.navbar {
+    background-color: var(--healthcare-blue) !important;
 }
-.chart-container {
-    background: #f9f9f9;
+
+.sidebar {
+    background-color: var(--healthcare-blue) !important;
+    height: calc(100vh - 56px);
+    position: fixed;
+    top: 56px;
+    left: 0;
+    width: 250px;
+    z-index: 100;
+    padding: 20px 0;
+    transition: transform 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: var(--healthcare-blue-dark);
+}
+
+.nav-link.active {
+    background-color: var(--healthcare-blue-light) !important;
+}
+
+.main-content {
+    margin-left: 250px;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 56px;
+    transition: margin-left 0.3s ease;
 }
 
-.grid-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .chart-container {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        @media (max-width: 768px) {
-            .grid-container {
-                grid-template-columns: 1fr; /* Single column on mobile */
-            }
-        }
-/*Header*/
-
-header {
-    background-color: #003366; /* Dark blue */
-    color: white;
-    padding: 15px 20px; /* Reduced padding for mobile */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    animation: fadeInDown 1s ease-in-out;
+.sidebar.collapsed {
+    transform: translateX(-250px);
 }
 
-header .title {
-    font-size: 20px; /* Smaller font size for mobile */
-    font-weight: bold;
+.main-content.expanded {
+    margin-left: 0;
 }
 
-header nav {
-    display: flex;
-    gap: 15px; /* Reduced gap for mobile */
-}
-
-header nav a {
-    color: white;
-    text-decoration: none;
-    font-size: 12px; /* Smaller font size for mobile */
-    transition: color 0.3s ease;
-}
-
-header nav a:hover {
-    color: #b0c4de; /* Light steel blue on hover */
-}
-
-/* Sign In Button */
-.gradient-btn {
-    padding: 10px 20px; /* More compact size */
-    font-size: 14px; /* Matches navigation scale */
-    color: white;
-    border: none;
-    border-radius: 5px; /* Matches site's rounded corners */
-    background: linear-gradient(45deg, #003366, #0077b6, #00a2ff, #0077b6, #003366); /* Blue spectrum */
-    background-size: 300% 300%;
-    cursor: pointer;
-    transition: all 0.4s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-left: 10px; /* Spacing from other nav items */
-}
-
-.gradient-btn:hover {
-    background-position: 100% 100%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transform: translateY(-1px); /* Subtle lift effect */
-}
-
-.gradient-btn:active {
-    transform: scale(0.98) translateY(0);
-}
-
-/*Footer*/
-
-.footer {
-    padding: 15px; /* Reduced padding for mobile */
-    background: #003366; /* Dark blue background */
-    display: flex;
-    flex-direction: column; /* Stack footer content vertically on mobile */
-    justify-content: center;
-    align-items: center;
-    font-size: 12px;
-}
-
-.footer div {
-    text-align: center;
-    margin-bottom: 10px; /* Space between footer sections */
-}
-
-.footer div h3 {
-    color: #fff;
-    font-size: 16px; /* Smaller font size for mobile */
-    font-style: italic;
-    font-weight: bold;
-    margin-bottom: 10px; /* Reduced margin */
-    letter-spacing: 1px;
-}
-
-.col-2 {
-    color: #fff;
-}
-
-/* Social Media Icons */
-.social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 10px; /* Space between icons */
-}
-
-.social-icons a {
-    text-decoration: none;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 2rem; /* Smaller icons for mobile */
-    height: 2rem; /* Smaller icons for mobile */
-    background-color: transparent;
-    border: 0.15rem solid #0077b6; /* Medium blue border */
-    font-size: 1.2rem; /* Smaller icon size for mobile */
+.status-dot {
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    transition: 0.3s ease;
-    color: #0077b6; /* Medium blue color */
+    display: inline-block;
 }
 
-.social-icons a:hover {
-    color: #fff; /* White on hover */
-    background-color: #0077b6; /* Medium blue background on hover */
-    transform: scale(1.1); /* Slight scale effect */
-    box-shadow: 0 0 10px #0077b6; /* Subtle glow effect */
+.btn-dark {
+    background-color: var(--healthcare-blue-dark);
+    border-color: var(--healthcare-blue-dark);
 }
 
-
-/*Body*/
-
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f0f8ff; /* Light blue background */
-    color: #003366; /* Dark blue text */
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+.btn-dark:hover {
+    background-color: var(--healthcare-blue);
+    border-color: var(--healthcare-blue);
 }
-
-/*Mobile Responsiveness*/
 
 @media (max-width: 768px) {
-    header {
-        padding: 10px 15px; /* Further reduced padding for smaller screens */
+    .sidebar {
+        transform: translateX(-250px);
     }
 
-    header .title {
-        font-size: 15px; /* Smaller font size for smaller screens */
+    .sidebar.active {
+        transform: translateX(0);
     }
 
-    header nav {
-        gap: 10px; /* Reduced gap for smaller screens */
-    }
-
-    header nav a {
-        font-size: 10px; /* Smaller font size for smaller screens */
-    }
-
-    .footer {
-        padding: 10px; /* Further reduced padding for smaller screens */
-    }
-
-    .footer div h3 {
-        font-size: 14px; /* Smaller font size for smaller screens */
-    }
-
-    .social-icons a {
-        width: 1.8rem; /* Smaller icons for smaller screens */
-        height: 1.8rem; /* Smaller icons for smaller screens */
-        font-size: 1rem; /* Smaller icon size for smaller screens */
-    }
-
-    .gradient-btn {
-        padding: 8px 15px;
-        font-size: 12px;
-        margin-left: 5px;
+    .main-content {
+        margin-left: 0;
     }
 }
