@@ -1,74 +1,85 @@
-const createChart = (id, type, data, options) => {
-    new Chart(document.getElementById(id), {
-        type: type,
-        data: data,
-        options: options
-    });
+// Sidebar Toggle Functionality
+const sidebarToggle = document.getElementById('sidebarToggle');
+const sidebar = document.getElementById('sidebar');
+const mainContent = document.getElementById('mainContent');
+
+sidebarToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('collapsed');
+    mainContent.classList.toggle('expanded');
+});
+
+
+
+// Chart Data
+const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+const fallsData = {
+    labels: days,
+    datasets: [
+        {
+            label: 'Falls',
+            data: [2, 1, 3, 0, 2, 1, 0],
+            backgroundColor: '#dc3545',
+            barPercentage: 0.6,
+        },
+        {
+            label: 'No Falls',
+            data: [22, 23, 21, 24, 22, 23, 24],
+            backgroundColor: '#198754',
+            barPercentage: 0.6,
+        }
+        ]
 };
 
-// 📊 1. Falls vs Non-Falls Distribution (Bar Chart)
-createChart("chart1", "bar", {
-    labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-    datasets: [
-        {
-            label: "Falls",
-            data: [3, 2, 4, 1, 5, 3, 2],
-            backgroundColor: "rgba(255, 99, 132, 0.6)"
-        },
-        {
-            label: "Non-Falls",
-            data: [20, 18, 25, 22, 19, 21, 23],
-            backgroundColor: "rgba(54, 162, 235, 0.6)"
-        }
-        ]
-}, { responsive: true });
-
-// 📊 2. Average Heart Rates (Line Chart)
-createChart("chart2", "line", {
-    labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+const heartRateData = {
+    labels: days,
     datasets: [{
-        label: "Avg Heart Rate (bpm)",
-        data: [72, 75, 74, 70, 73, 71, 76],
-        borderColor: "rgba(255, 159, 64, 1)",
-        backgroundColor: "rgba(255, 159, 64, 0.2)",
-        borderWidth: 2,
+        label: 'BPM',
+        data: [72, 75, 71, 73, 70, 69, 72],
+        borderColor: '#0d6efd',
+        tension: 0.3,
+        fill: false
+    }]
+};
+
+const movementData = {
+    labels: days,
+    datasets: [{
+        label: 'Movement %',
+        data: [65, 72, 58, 69, 62, 45, 51],
+        borderColor: '#6f42c1',
+        backgroundColor: 'rgba(111, 66, 193, 0.2)',
+        tension: 0.3,
         fill: true
     }]
-}, { responsive: true });
+};
 
-// 📊 3. Average Blood Pressure (Line Chart)
-createChart("chart3", "line", {
-    labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-    datasets: [
-        {
-            label: "Systolic (mmHg)",
-            data: [120, 118, 121, 122, 119, 117, 123],
-            borderColor: "rgba(75, 192, 192, 1)",
-            backgroundColor: "rgba(75, 192, 192, 0.2)",
-            borderWidth: 2,
-            fill: true
-        },
-        {
-            label: "Diastolic (mmHg)",
-            data: [80, 78, 81, 79, 77, 76, 82],
-            borderColor: "rgba(153, 102, 255, 1)",
-            backgroundColor: "rgba(153, 102, 255, 0.2)",
-            borderWidth: 2,
-            fill: true
+// Chart Configuration
+const chartConfig = {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+        y: {
+            beginAtZero: true
         }
-        ]
-}, { responsive: true });
+    }
+};
 
-// 📊 4. Daily Movement Trend Over the Week (Time Series Line Chart)
+// Create Charts
+new Chart(document.getElementById('fallsChart'), {
+    type: 'bar',
+    data: fallsData,
+    options: chartConfig
+});
 
-createChart("chart4", "line", {
-    labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-    datasets: [{
-        label: "Avg Movement Score",
-        data: [200, 250, 230, 270, 260, 240, 280],
-        borderColor: "rgba(255, 206, 86, 1)",
-        backgroundColor: "rgba(255, 206, 86, 0.2)",
-        borderWidth: 2,
-        fill: true
-    }]
-}, { responsive: true });
+new Chart(document.getElementById('heartRateChart'), {
+    type: 'line',
+    data: heartRateData,
+    options: chartConfig
+});
+
+new Chart(document.getElementById('movementChart'), {
+    type: 'line',
+    data: movementData,
+    options: chartConfig
+});
