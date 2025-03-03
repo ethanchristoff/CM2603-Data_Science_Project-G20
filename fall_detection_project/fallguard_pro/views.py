@@ -1,24 +1,162 @@
 import cv2
+import mediapipe as mp
+import numpy as np
+import csv
+import time
+import os
+import pickle
+from datetime import datetime
+import joblib
+from django.conf import settings
 from django.http import StreamingHttpResponse
 from django.shortcuts import render
 
 def get_camera_page(request):
-    return render(request, "camera_feed.html")
+    # Get the recordings directory
+    recordings_dir = os.path.join(settings.MEDIA_ROOT, 'recordings')
+
+    video_files = []
+    if os.path.exists(recordings_dir):
+        video_files = [f for f in os.listdir(recordings_dir) if f.endswith(('.mp4', '.avi', '.mov'))]
+
+    context = {
+        'videos': [settings.MEDIA_URL + 'recordings/' + video for video in video_files]
+    }
+
+    # Render the camera feed template along with the video list
+    return render(request, "camera_feed.html", context)
 
 def gen_frames():
-    cap = cv2.VideoCapture(0)  # 0 for the default camera
-    while True:
-        success, frame = cap.read()
-        if not success:
-            break
-        else:
-            # Encode the frame in JPEG format
-            ret, buffer = cv2.imencode('.jpg', frame)
-            frame = buffer.tobytes()
-            
-            # Yield the frame for streaming
-            yield (b'--frame\r\n'
-                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+    # Load model and scaler from 'fallguard_pro/static/KNN_model'
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # Points to 'fallguard_pro'
+    model_dir = os.path.join(settings.BASE_DIR, 'fallguard_pro', 'static', 'KNN_model')
+    scaler_path = os.path.join(model_dir, 'scaler.pkl')
+    model_path = os.path.join(model_dir, 'knn_model.pkl')
+
+    try:
+        scaler = joblib.load(scaler_path)
+        with open(model_path, 'rb') as model_file:
+            knn_model = pickle.load(model_file)
+    except Exception as e:
+        print(f"Error loading model: {str(e)}")
+        yield None
+        return
+
+    # MediaPipe setup
+    mp_pose = mp.solutions.pose
+    mp_drawing = mp.solutions.drawing_utils
+    non_face_indices = list(range(11, 33))
+
+    # Video capture setup
+    cap = cv2.VideoCapture(0)
+    if not cap.isOpened():
+        print("Error: Could not open camera.")
+        return
+
+    # Create recordings and logs directories
+    recordings_dir = os.path.join(settings.MEDIA_ROOT, 'recordings')
+    os.makedirs(recordings_dir, exist_ok=True)
+
+    log_filename = 'fall_detection_log.csv'
+    log_path = os.path.join(settings.MEDIA_ROOT, log_filename)
+    os.makedirs(os.path.dirname(log_path), exist_ok=True)
+
+    # Prepare CSV logging
+    with open(log_path, 'w', newline='') as log_file:
+        writer = csv.writer(log_file)
+        writer.writerow(["Timestamp", "Status"])  # CSV header
+
+        # Fall detection variables
+        fall_start_time = None
+        non_fall_start_time = time.time()
+        recording = False
+        video_filename = None
+        fall_video_writer = None
+        fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+
+        with mp_pose.Pose(min_detection_confidence=0.3, min_tracking_confidence=0.3) as pose:
+            while True:
+                success, frame = cap.read()
+                if not success:
+                    break
+
+                image = cv2.resize(frame, (640, 480))
+                image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+                results = pose.process(image_rgb)
+
+                label = "No Pose Detected"
+                if results.pose_landmarks:
+                    height, width, _ = image.shape
+                    landmarks = results.pose_landmarks.landmark
+                    filtered_landmarks = [landmarks[i] for i in non_face_indices]
+
+                    x_coords = [lm.x * width for lm in filtered_landmarks]
+                    y_coords = [lm.y * height for lm in filtered_landmarks]
+                    visibilities = [lm.visibility for lm in filtered_landmarks]
+
+                    x_min, x_max = min(x_coords), max(x_coords)
+                    y_min, y_max = min(y_coords), max(y_coords)
+
+                    features_input = np.array([
+                        np.mean(x_coords),
+                        np.mean(y_coords),
+                        np.mean(visibilities),
+                        x_max - x_min,
+                        y_max - y_min
+                    ])
+
+                    features_input_scaled = scaler.transform([features_input])
+                    prediction = knn_model.predict(features_input_scaled)[0]
+                    label = "Falling" if prediction == 1 else "Not Falling"
+
+                    current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                    writer.writerow([current_time, label])  # Log to CSV
+
+                    # Fall detection and recording logic
+                    if prediction == 1:
+                        if fall_start_time is None:
+                            fall_start_time = time.time()
+                            timestamp_str = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+                            video_filename = os.path.join(recordings_dir, f"fall_{timestamp_str}.mp4")
+                            fall_video_writer = cv2.VideoWriter(video_filename, fourcc, 20.0, (640, 480))
+                            recording = True
+
+                        if recording:
+                            fall_video_writer.write(image)
+                    else:
+                        if fall_start_time is not None:
+                            fall_duration = time.time() - fall_start_time
+                            if fall_duration < 5 and recording:
+                                fall_video_writer.release()
+                                os.remove(video_filename)  # Delete short fall video
+                            elif recording:
+                                fall_video_writer.release()  # Save long fall video
+                            fall_start_time = None
+                            recording = False
+
+                    # Draw pose landmarks and bounding box
+                    mp_drawing.draw_landmarks(
+                        image,
+                        results.pose_landmarks,
+                        mp_pose.POSE_CONNECTIONS,
+                        mp_drawing.DrawingSpec(color=(245, 117, 66), thickness=2, circle_radius=2),
+                        mp_drawing.DrawingSpec(color=(245, 66, 230), thickness=2, circle_radius=2),
+                    )
+                    cv2.rectangle(image, (int(x_min), int(y_min)), (int(x_max), int(y_max)), (0, 255, 0), 2)
+                    cv2.putText(image, label, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+
+                # Encode and yield frame for streaming
+                ret, buffer = cv2.imencode('.jpg', image)
+                frame_bytes = buffer.tobytes()
+                yield (b'--frame\r\n'
+                       b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
+
+    # Cleanup resources
+    cap.release()
+    if fall_video_writer is not None:
+        fall_video_writer.release()
+
+    print(f"Fall detection log saved to: {log_path}")
 
 def camera_feed(request):
     return StreamingHttpResponse(gen_frames(), content_type='multipart/x-mixed-replace; boundary=frame')

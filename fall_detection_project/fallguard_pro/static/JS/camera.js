@@ -1,72 +1,45 @@
-// Sidebar Toggle Functionality
-const sidebarToggle = document.getElementById('sidebarToggle');
-const sidebar = document.getElementById('sidebar');
-const mainContent = document.getElementById('mainContent');
+// Video Slider Functionality
+const slider = document.getElementById('videoSlider');
+const prevButton = document.querySelector('.prev');
+const nextButton = document.querySelector('.next');
+let currentIndex = 0;
 
-sidebarToggle.addEventListener('click', () => {
-    sidebar.classList.toggle('collapsed');
-    mainContent.classList.toggle('expanded');
-});
+// Update slider position
+function updateSliderPosition() {
+  const videoWrappers = document.querySelectorAll('.video-wrapper');
+  if (!videoWrappers.length) return;
 
-const videos = [
-    'videos/fall1.mp4',
-    'videos/fall2.mp4',
-    'videos/fall3.mp4',
-    'videos/fall4.mp4', 
-  ];
-  
-  const slider = document.getElementById('videoSlider');
-  let currentIndex = 0;
-  
-  // Load videos dynamically
-  function loadVideos() {
-    slider.innerHTML = ''; // Clear existing videos
-  
-    videos.forEach((videoSrc) => {
-      const videoWrapper = document.createElement('div');
-      videoWrapper.classList.add('video-wrapper');
-  
-      const video = document.createElement('video');
-      video.src = videoSrc;
-      video.controls = true;
-  
-      videoWrapper.appendChild(video);
-      slider.appendChild(videoWrapper);
-    });
-  
-    updateSliderPosition(); // Position videos correctly
-  }
-  
-  // Update slider position based on the current index
-  function updateSliderPosition() {
-    const videoWrapper = document.querySelector('.video-wrapper');
-    if (!videoWrapper) return;
-  
-    const videoWidth = videoWrapper.getBoundingClientRect().width;
-    const gap = 20; // Matches CSS gap
-    const totalOffset = currentIndex * (videoWidth + gap);
-  
-    slider.style.transform = `translateX(-${totalOffset}px)`;
-  }
-  
-  // Navigate to the previous video
-  function prevVideo() {
-    if (currentIndex > 0) {
-      currentIndex--;
-      updateSliderPosition();
-    }
-  }
-  
-  // Navigate to the next video
-  function nextVideo() {
-    if (currentIndex < videos.length - 1) {
-      currentIndex++;
-      updateSliderPosition();
-    }
-  }
-  
-  // Recalculate slider position on window resize
-  window.addEventListener('resize', updateSliderPosition);
-  
-  // Initialize on page load
-  document.addEventListener('DOMContentLoaded', loadVideos);  
+  const videoWidth = videoWrappers[0].offsetWidth;
+  const gap = 20; // Should match CSS gap
+  const totalOffset = currentIndex * (videoWidth + gap);
+
+  slider.style.transform = `translateX(-${totalOffset}px)`;
+}
+
+// Navigate to previous video
+function prevVideo() {
+  const videoCount = document.querySelectorAll('.video-wrapper').length;
+  if (videoCount === 0) return;
+
+  currentIndex = currentIndex > 0 ? currentIndex - 1 : videoCount - 1;
+  updateSliderPosition();
+}
+
+// Navigate to next video
+function nextVideo() {
+  const videoCount = document.querySelectorAll('.video-wrapper').length;
+  if (videoCount === 0) return;
+
+  currentIndex = currentIndex < videoCount - 1 ? currentIndex + 1 : 0;
+  updateSliderPosition();
+}
+
+// Attach event listeners if buttons exist
+if (prevButton) prevButton.addEventListener('click', prevVideo);
+if (nextButton) nextButton.addEventListener('click', nextVideo);
+
+// Recalculate on window resize
+window.addEventListener('resize', updateSliderPosition);
+
+// Initialize slider position on page load
+document.addEventListener('DOMContentLoaded', updateSliderPosition);
