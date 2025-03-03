@@ -104,17 +104,29 @@
       });
     </script>
 
-
     <!-- Past Recordings Section -->
     <div class="recordings-section">
       <h2>Past Fall Recordings</h2>
-      <div class="slider-container">
-        <button class="slider-btn prev" onclick="prevVideo()">&#10094;</button>
-        <div class="slider-wrapper">
-          <div class="slider" id="videoSlider"></div>
+      {% if videos %}
+        <div class="slider-container">
+          <button class="slider-btn prev" onclick="prevVideo()">&#10094;</button>
+          <div class="slider-wrapper">
+            <div class="slider" id="videoSlider">
+              {% for video in videos %}
+                <div class="video-wrapper">
+                  <video width="400" controls>
+                    <source src="{% get_media_prefix %}recordings/{{ video }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          <button class="slider-btn next" onclick="nextVideo()">&#10095;</button>
         </div>
-        <button class="slider-btn next" onclick="nextVideo()">&#10095;</button>
-      </div>
+      {% else %}
+        <p>No recordings found.</p>
+      {% endif %}
     </div>
   </main>
 </body>
