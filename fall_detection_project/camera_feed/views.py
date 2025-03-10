@@ -8,13 +8,13 @@ import pickle
 from datetime import datetime
 import joblib
 from django.conf import settings
-from django.http import StreamingHttpResponse
+from django.http import StreamingHttpResponse, JsonResponse
 from django.shortcuts import render
+from django.core.cache import cache
 
 def get_camera_page(request):
-    # Get the recordings directory
     recordings_dir = os.path.join(settings.MEDIA_ROOT, 'recordings')
-
+    
     video_files = []
     if os.path.exists(recordings_dir):
         video_files = [f for f in os.listdir(recordings_dir) if f.endswith(('.mp4', '.avi', '.mov'))]
@@ -27,8 +27,6 @@ def get_camera_page(request):
     return render(request, "camera_feed.html", context)
 
 def gen_frames():
-    # Load model and scaler from 'camera_feed/static/KNN_model'
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # Points to 'camera_feed'
     model_dir = os.path.join(settings.BASE_DIR, 'camera_feed', 'static', 'KNN_model')
     scaler_path = os.path.join(model_dir, 'scaler.pkl')
     model_path = os.path.join(model_dir, 'knn_model.pkl')
@@ -39,40 +37,33 @@ def gen_frames():
             knn_model = pickle.load(model_file)
     except Exception as e:
         print(f"Error loading model: {str(e)}")
-        yield None
         return
 
-    # MediaPipe setup
     mp_pose = mp.solutions.pose
     mp_drawing = mp.solutions.drawing_utils
     non_face_indices = list(range(11, 33))
 
-    # Video capture setup
     cap = cv2.VideoCapture(0)
     if not cap.isOpened():
         print("Error: Could not open camera.")
         return
 
-    # Create recordings and logs directories
     recordings_dir = os.path.join(settings.MEDIA_ROOT, 'recordings')
     os.makedirs(recordings_dir, exist_ok=True)
 
     log_filename = 'fall_detection_log.csv'
     log_path = os.path.join(settings.MEDIA_ROOT, log_filename)
-    os.makedirs(os.path.dirname(log_path), exist_ok=True)
+    os.makedirs(settings.MEDIA_ROOT, exist_ok=True)
 
-    # Prepare CSV logging
+    fall_start_time = None
+    recording = False
+    video_filename = None
+    fall_video_writer = None
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+
     with open(log_path, 'w', newline='') as log_file:
         writer = csv.writer(log_file)
-        writer.writerow(["Timestamp", "Status"])  # CSV header
-
-        # Fall detection variables
-        fall_start_time = None
-        non_fall_start_time = time.time()
-        recording = False
-        video_filename = None
-        fall_video_writer = None
-        fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+        writer.writerow(["Timestamp", "Status"])  
 
         with mp_pose.Pose(min_detection_confidence=0.3, min_tracking_confidence=0.3) as pose:
             while True:
@@ -85,6 +76,8 @@ def gen_frames():
                 results = pose.process(image_rgb)
 
                 label = "No Pose Detected"
+                fall_detected = False
+
                 if results.pose_landmarks:
                     height, width, _ = image.shape
                     landmarks = results.pose_landmarks.landmark
@@ -108,11 +101,13 @@ def gen_frames():
                     features_input_scaled = scaler.transform([features_input])
                     prediction = knn_model.predict(features_input_scaled)[0]
                     label = "Falling" if prediction == 1 else "Not Falling"
+                    fall_detected = True if prediction == 1 else False
 
                     current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                    writer.writerow([current_time, label])  # Log to CSV
+                    writer.writerow([current_time, label])  
 
-                    # Fall detection and recording logic
+                    cache.set('fall_detected', fall_detected, timeout=10)
+
                     if prediction == 1:
                         if fall_start_time is None:
                             fall_start_time = time.time()
@@ -128,13 +123,12 @@ def gen_frames():
                             fall_duration = time.time() - fall_start_time
                             if fall_duration < 5 and recording:
                                 fall_video_writer.release()
-                                os.remove(video_filename)  # Delete short fall video
+                                os.remove(video_filename)
                             elif fall_duration >= 5 and recording:
-                                fall_video_writer.release()  # Save only if fall lasted over 5 sec
+                                fall_video_writer.release()
                             fall_start_time = None
                             recording = False
 
-                    # Draw pose landmarks and bounding box
                     mp_drawing.draw_landmarks(
                         image,
                         results.pose_landmarks,
@@ -145,18 +139,20 @@ def gen_frames():
                     cv2.rectangle(image, (int(x_min), int(y_min)), (int(x_max), int(y_max)), (0, 255, 0), 2)
                     cv2.putText(image, label, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
 
-                # Encode and yield frame for streaming
                 ret, buffer = cv2.imencode('.jpg', image)
                 frame_bytes = buffer.tobytes()
                 yield (b'--frame\r\n'
                        b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
 
-    # Cleanup resources
     cap.release()
     if fall_video_writer is not None:
         fall_video_writer.release()
 
     print(f"Fall detection log saved to: {log_path}")
+
+def get_fall_status(request):
+    fall_detected = cache.get('fall_detected', False)
+    return JsonResponse({'fall_detected': fall_detected})
 
 def camera_feed(request):
     return StreamingHttpResponse(gen_frames(), content_type='multipart/x-mixed-replace; boundary=frame')
