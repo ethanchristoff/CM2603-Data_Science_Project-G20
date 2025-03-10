@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class FallguardProConfig(AppConfig):
+class camerafeedConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'fallguard_pro'
+    name = 'camera_feed'

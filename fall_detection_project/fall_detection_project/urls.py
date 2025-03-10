@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('fallguard_pro/',include("fallguard_pro.urls"))
+    path('fallguard_pro/',include("camera_feed.urls"))
 ]
 
 if settings.DEBUG:
