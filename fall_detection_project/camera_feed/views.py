@@ -20,16 +20,16 @@ def get_camera_page(request):
         video_files = [f for f in os.listdir(recordings_dir) if f.endswith(('.mp4', '.avi', '.mov'))]
 
     context = {
-        'videos': [settings.MEDIA_URL + 'recordings/' + video for video in video_files]
+        'videos': video_files,
+        'MEDIA_URL': settings.MEDIA_URL  
     }
 
-    # Render the camera feed template along with the video list
     return render(request, "camera_feed.html", context)
 
 def gen_frames():
-    # Load model and scaler from 'fallguard_pro/static/KNN_model'
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # Points to 'fallguard_pro'
-    model_dir = os.path.join(settings.BASE_DIR, 'fallguard_pro', 'static', 'KNN_model')
+    # Load model and scaler from 'camera_feed/static/KNN_model'
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # Points to 'camera_feed'
+    model_dir = os.path.join(settings.BASE_DIR, 'camera_feed', 'static', 'KNN_model')
     scaler_path = os.path.join(model_dir, 'scaler.pkl')
     model_path = os.path.join(model_dir, 'knn_model.pkl')
 
@@ -129,8 +129,8 @@ def gen_frames():
                             if fall_duration < 5 and recording:
                                 fall_video_writer.release()
                                 os.remove(video_filename)  # Delete short fall video
-                            elif recording:
-                                fall_video_writer.release()  # Save long fall video
+                            elif fall_duration >= 5 and recording:
+                                fall_video_writer.release()  # Save only if fall lasted over 5 sec
                             fall_start_time = None
                             recording = False
 
