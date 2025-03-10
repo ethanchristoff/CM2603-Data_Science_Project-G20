@@ -69,8 +69,8 @@
 
   <!-- Main Content -->
   <main class="main-content" style="margin-left: 250px; padding: 20px; margin-top: 56px;">
-    <div class="news-bar">
-      <p>Important Update: New features coming soon! Stay tuned for updates.</p>
+    <div class="news-bar" id="newsBar">
+      <p id="newsText">System is monitoring for falls...</p>
     </div>
     
     <!-- Start & Stop Buttons -->
@@ -85,6 +85,28 @@
     </div>
 
     <script>
+      function checkFallStatus() {
+        console.log("Checking fall status..."); // Debugging log
+    
+        fetch('/fallguard_pro/get_fall_status/')
+          .then(response => response.json())
+          .then(data => {
+            console.log("Fetched fall status:", data);
+    
+            const newsBar = document.getElementById('newsBar');
+            const newsText = document.getElementById('newsText');
+    
+            if (data.fall_detected) {
+              newsBar.style.backgroundColor = 'red';
+              newsText.innerText = '⚠️ Fall Detected! Immediate action required.';
+            } else {
+              newsBar.style.backgroundColor = 'green';
+              newsText.innerText = '✅ No Falls Detected. All clear.';
+            }
+          })
+          .catch(error => console.error('Error fetching fall status:', error));
+      }
+
       const startButton = document.getElementById('startButton');
       const stopButton = document.getElementById('stopButton');
       const cameraFeed = document.getElementById('cameraFeed');
@@ -101,6 +123,12 @@
         cameraFeed.style.display = 'none';
         startButton.disabled = false;
         stopButton.disabled = true;
+      });
+
+       // Run checkFallStatus() every 5 seconds
+      document.addEventListener('DOMContentLoaded', function() {
+        checkFallStatus();
+        setInterval(checkFallStatus, 5000);
       });
 
       document.getElementById("toggleSidebar").addEventListener("click", function () {
