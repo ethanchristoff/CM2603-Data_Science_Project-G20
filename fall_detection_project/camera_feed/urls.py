@@ -4,8 +4,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('camera_page/',views.get_camera_page, name="camera_page"),
-    path('camera_feed/', views.camera_feed, name='camera_feed'),# Debugging page for the camera feed
+    path('',views.get_camera_page, name="camera_page"),
+    path('camera_feed/', views.camera_feed, name='camera_feed'),
     path('get_fall_status/', views.get_fall_status, name='get_fall_status'),
 ]
 if settings.DEBUG:
