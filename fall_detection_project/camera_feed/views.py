@@ -48,12 +48,16 @@ def gen_frames():
         print("Error: Could not open camera.")
         return
 
+    # Create necessary directories
     recordings_dir = os.path.join(settings.MEDIA_ROOT, 'recordings')
     os.makedirs(recordings_dir, exist_ok=True)
 
-    log_filename = 'fall_detection_log.csv'
-    log_path = os.path.join(settings.MEDIA_ROOT, log_filename)
     os.makedirs(settings.MEDIA_ROOT, exist_ok=True)
+
+    # Generate a unique log file with timestamp
+    timestamp_str = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    log_filename = f'fall_detection_log_{timestamp_str}.csv'
+    log_path = os.path.join(settings.MEDIA_ROOT, log_filename)
 
     fall_start_time = None
     recording = False
@@ -99,19 +103,22 @@ def gen_frames():
                     ])
 
                     features_input_scaled = scaler.transform([features_input])
+                    '''
+                    To output a real time feed from the code below the prediction variable consists of the prediction
+                    made by the model, simply output that onto a graph and you'll get either a 1 (fall) or 0 (non-fall)
+                    '''
                     prediction = knn_model.predict(features_input_scaled)[0]
                     label = "Falling" if prediction == 1 else "Not Falling"
                     fall_detected = True if prediction == 1 else False
 
                     current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                    writer.writerow([current_time, label])  
+                    writer.writerow([current_time, 1 if fall_detected else 0])  # Store falls as 1, non-falls as 0
 
                     cache.set('fall_detected', fall_detected, timeout=10)
 
                     if prediction == 1:
                         if fall_start_time is None:
                             fall_start_time = time.time()
-                            timestamp_str = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
                             video_filename = os.path.join(recordings_dir, f"fall_{timestamp_str}.mp4")
                             fall_video_writer = cv2.VideoWriter(video_filename, fourcc, 20.0, (640, 480))
                             recording = True
