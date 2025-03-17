@@ -25,7 +25,7 @@
       <button class="btn btn-link text-white" id="toggleSidebar">
         <i class="bi bi-list fs-4"></i>
       </button>
-      <a class="navbar-brand ms-3" href="#">Elderly Fall Detection System</a>
+      <a class="navbar-brand ms-3" href="#">FallGuard Pro</a>
       <div class="ms-auto d-flex align-items-center">
         <div class="position-relative me-4">
           <i class="bi bi-bell text-white fs-5"></i>
@@ -50,18 +50,28 @@
   <div class="sidebar text-white" id="sidebar" style="background-color: #2c5282; height: calc(100vh - 56px); position: fixed; top: 56px; left: 0; width: 250px; padding: 20px 0;">
     <ul class="nav nav-pills flex-column">
       <li class="nav-item">
-        <a class="nav-link text-white" href="#dashboard.html">
+        <a class="nav-link text-white" href="{% url 'dashboard' %}">
           <i class="bi bi-file-text me-2"></i>Dashboard
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="#weekly_report.html">
+        <a class="nav-link text-white" href="{% url 'weekly-report' %}">
           <i class="bi bi-bar-chart me-2"></i>Weekly Report
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link text-white active">
           <i class="bi bi-camera-video me-2"></i>Live Feed
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white">
+          <i class="bi bi-gear me-2"></i>Settings
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white">
+          <i class="bi bi-question-circle me-2"></i>Help
         </a>
       </li>
     </ul>
@@ -88,7 +98,7 @@
       function checkFallStatus() {
         console.log("Checking fall status..."); // Debugging log
     
-        fetch('/fallguard_pro/get_fall_status/')
+        fetch('/camera_feed/get_fall_status/')
           .then(response => response.json())
           .then(data => {
             console.log("Fetched fall status:", data);
@@ -112,7 +122,7 @@
       const cameraFeed = document.getElementById('cameraFeed');
 
       startButton.addEventListener('click', () => {
-        cameraFeed.src = "{% url 'camera_feed' %}";
+        cameraFeed.src = "{% url 'live_feed' %}";
         cameraFeed.style.display = 'block';
         startButton.disabled = true;
         stopButton.disabled = false;

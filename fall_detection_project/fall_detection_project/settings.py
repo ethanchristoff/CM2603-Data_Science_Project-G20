@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'camera_feed'
+    'camera_feed',
+    'dashboard',
+    'weekly_report'
 ]
 
 MIDDLEWARE = [
