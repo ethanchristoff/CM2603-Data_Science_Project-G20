@@ -1,0 +1,545 @@
+{% comment %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fall Detection System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  <!-- Chart.js -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <script src="{% static 'js/profile.js' %}" defer></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <button class="btn btn-link text-white" id="sidebarToggle">
+                <i class="bi bi-list fs-4"></i>
+            </button>
+            <a class="navbar-brand ms-3" href="#">FallGuard Pro</a>
+            <div class="ms-auto d-flex align-items-center">
+                <div class="position-relative me-4">
+                    <i class="bi bi-bell text-white fs-5"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        3
+                    </span>
+                </div>
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" style="background-color: rgba(255,255,255,0.1); border: none;">
+                        <div class="bg-white text-dark rounded-circle d-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
+                            JD
+                        </div>
+                        <span class="text-white">John</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/weekly_report/about/a">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar text-white" id="sidebar">
+        <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{% url 'dashboard' %}">
+                    <i class="bi bi-speedometer2 me-2"></i>Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{% url 'weekly-report' %}">
+                    <i class="bi bi-bar-chart me-2"></i>Weekly Report
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{% url 'camera_feed' %}">
+                    <i class="bi bi-camera-video me-2"></i>Live Feed
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#">
+                    <i class="bi bi-gear me-2"></i>Settings
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#">
+                    <i class="bi bi-question-circle me-2"></i>Help
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container main-content ">
+        <h2>Edit Profile</h2>
+        <form>
+            <label>Email:</label>
+            <input type="email" value="johndoe@example.com">
+
+            <label>New Password:</label>
+            <input type="password" placeholder="Enter new password">
+
+            <label>Confirm Password:</label>
+            <input type="password" placeholder="Confirm new password">
+
+            <label>Profile Picture:</label>
+            <input type="file">
+
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+
+    <footer class="footer">
+        &copy; 2024 Your Company
+    </footer>
+
+</body>
+</html>{% endcomment %}
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - FallGuard Pro</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <script src="{% static 'js/profile.js' %}" defer></script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <button class="btn btn-link text-white" id="sidebarToggle">
+                <i class="bi bi-list fs-4"></i>
+            </button>
+            <a class="navbar-brand ms-3" href="#">FallGuard Pro</a>
+            <div class="ms-auto d-flex align-items-center">
+                <div class="position-relative me-4">
+                    <i class="bi bi-bell text-white fs-5"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        3
+                    </span>
+                </div>
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle d-flex align-items-center" type="button"
+                        data-bs-toggle="dropdown" style="background-color: rgba(255,255,255,0.1); border: none;">
+                        <div class="bg-white text-dark rounded-circle d-flex align-items-center justify-content-center me-2"
+                            style="width: 32px; height: 32px;">
+                            JD
+                        </div>
+                        <span class="text-white">John</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item active" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar text-white" id="sidebar">
+        <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'dashboard' %}">
+                    <i class="bi bi-speedometer2 me-2"></i>Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'weekly-report' %}">
+                    <i class="bi bi-bar-chart me-2"></i>Weekly Report
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'camera_feed' %}">
+                    <i class="bi bi-camera-video me-2"></i>Live Feed
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="bi bi-gear me-2"></i>Settings
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="bi bi-question-circle me-2"></i>Help
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main-content " id="mainContent">
+        <div class="container-fluid">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center mt-2">
+                        <h2 class="user-profile-h2"><i class="bi bi-person-circle me-2"></i>User Profile</h2>
+                        <button class="btn btn-dark" id="editProfileBtn">
+                            <i class="bi bi-pencil-square me-2"></i>Edit Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Form -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form id="profileForm">
+                                <!-- Personal Information Section -->
+                                <div class="row mb-4">
+                                    <div class="col-12">
+                                        <h4 class="border-bottom pb-2 mb-3">Personal Information</h4>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="firstName" class="form-label">First Name</label>
+                                        <input type="text" class="form-control" id="firstName" value="John" disabled>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="lastName" class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" id="lastName" value="Doe" disabled>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="dateOfBirth" class="form-label">Date of Birth</label>
+                                        <input type="date" class="form-control" id="dateOfBirth" value="1955-08-15" disabled>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="gender" class="form-label">Gender</label>
+                                        <select class="form-select" id="gender" disabled>
+                                            <option value="male" selected>Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="height" class="form-label">Height (cm)</label>
+                                        <input type="number" class="form-control" id="height" value="178" disabled>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="weight" class="form-label">Weight (kg)</label>
+                                        <input type="number" class="form-control" id="weight" value="75" disabled>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="phoneNumber" class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control" id="phoneNumber" value="555-123-4567" disabled>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="email" value="john.doe@example.com" disabled>
+                                    </div>
+                                </div>
+
+                                <!-- Emergency Contacts Section -->
+                                <div class="row mb-4">
+                                    <div class="col-12">
+                                        <h4 class="border-bottom pb-2 mb-3">Emergency Contacts</h4>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="emergencyName1" class="form-label">Primary Contact Name</label>
+                                        <input type="text" class="form-control" id="emergencyName1" value="Jane Doe" disabled>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="emergencyRelation1" class="form-label">Relationship</label>
+                                        <input type="text" class="form-control" id="emergencyRelation1" value="Daughter" disabled>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="emergencyPhone1" class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control" id="emergencyPhone1" value="555-987-6543" disabled>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="emergencyName2" class="form-label">Secondary Contact Name</label>
+                                        <input type="text" class="form-control" id="emergencyName2" value="Robert Smith" disabled>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="emergencyRelation2" class="form-label">Relationship</label>
+                                        <input type="text" class="form-control" id="emergencyRelation2" value="Son" disabled>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="emergencyPhone2" class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control" id="emergencyPhone2" value="555-456-7890" disabled>
+                                    </div>
+                                </div>
+
+                                <!-- Medical Information Section -->
+                                <div class="row mb-4">
+                                    <div class="col-12">
+                                        <h4 class="border-bottom pb-2 mb-3">Medical Information</h4>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="primaryDoctor" class="form-label">Primary Doctor</label>
+                                        <input type="text" class="form-control" id="primaryDoctor" value="Dr. Emily Johnson" disabled>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="doctorPhone" class="form-label">Doctor's Phone</label>
+                                        <input type="tel" class="form-control" id="doctorPhone" value="555-444-3333" disabled>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="allergies" class="form-label">Allergies</label>
+                                        <textarea class="form-control" id="allergies" rows="2" disabled>Penicillin, Peanuts</textarea>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="medications" class="form-label">Current Medications</label>
+                                        <textarea class="form-control" id="medications" rows="3" disabled>Lisinopril 10mg (daily)
+Atorvastatin 20mg (daily)
+Metformin 500mg (twice daily)</textarea>
+                                    </div>
+                                </div>
+
+                                <!-- Fall Risk Factors Section -->
+                                <div class="row mb-4">
+                                    <div class="col-12">
+                                        <h4 class="border-bottom pb-2 mb-3">Fall Risk Factors</h4>
+                                    </div>
+
+                                    <!-- Medical Conditions Checklist -->
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Medical Conditions</label>
+                                        <div class="card p-3">
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="arthritis" checked disabled>
+                                                <label class="form-check-label" for="arthritis">Arthritis</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="parkinsons" disabled>
+                                                <label class="form-check-label" for="parkinsons">Parkinson's Disease</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="diabetes" checked disabled>
+                                                <label class="form-check-label" for="diabetes">Diabetes</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="heartDisease" checked disabled>
+                                                <label class="form-check-label" for="heartDisease">Heart Disease</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="hypertension" checked disabled>
+                                                <label class="form-check-label" for="hypertension">Hypertension</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="stroke" disabled>
+                                                <label class="form-check-label" for="stroke">Previous Stroke</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="dizziness" checked disabled>
+                                                <label class="form-check-label" for="dizziness">Dizziness/Vertigo</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="visualImpairment" checked disabled>
+                                                <label class="form-check-label" for="visualImpairment">Visual Impairment</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="hearingImpairment" disabled>
+                                                <label class="form-check-label" for="hearingImpairment">Hearing Impairment</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="osteoporosis" disabled>
+                                                <label class="form-check-label" for="osteoporosis">Osteoporosis</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="dementia" disabled>
+                                                <label class="form-check-label" for="dementia">Dementia/Cognitive Impairment</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Mobility Assessment -->
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Mobility Assessment</label>
+                                        <div class="card p-3">
+                                            <div class="mb-3">
+                                                <label for="mobilityAid" class="form-label">Mobility Aid Used</label>
+                                                <select class="form-select" id="mobilityAid" disabled>
+                                                    <option>None</option>
+                                                    <option selected>Cane</option>
+                                                    <option>Walker</option>
+                                                    <option>Wheelchair</option>
+                                                    <option>Other</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="gaitStability" class="form-label">Gait Stability</label>
+                                                <select class="form-select" id="gaitStability" disabled>
+                                                    <option>Stable</option>
+                                                    <option selected>Slightly Unstable</option>
+                                                    <option>Moderately Unstable</option>
+                                                    <option>Severely Unstable</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="balanceConfidence" class="form-label">Balance Confidence (0-10)</label>
+                                                <input type="range" class="form-range" min="0" max="10" step="1" id="balanceConfidence" value="6" disabled>
+                                                <div class="d-flex justify-content-between">
+                                                    <small>Low</small>
+                                                    <small>Medium</small>
+                                                    <small>High</small>
+                                                </div>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="difficultyStanding" checked disabled>
+                                                <label class="form-check-label" for="difficultyStanding">Difficulty Standing from Seated Position</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="difficultyStairs" checked disabled>
+                                                <label class="form-check-label" for="difficultyStairs">Difficulty with Stairs</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Fall History -->
+                                    <div class="col-12 mb-3">
+                                        <label class="form-label">Fall History</label>
+                                        <div class="card p-3">
+                                            <div class="row">
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="previousFalls" class="form-label">Previous Falls (Past 12 Months)</label>
+                                                    <select class="form-select" id="previousFalls" disabled>
+                                                        <option>None</option>
+                                                        <option>1 fall</option>
+                                                        <option selected>2 falls</option>
+                                                        <option>3+ falls</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="fallInjury" class="form-label">Injuries from Previous Falls</label>
+                                                    <select class="form-select" id="fallInjury" disabled>
+                                                        <option>None</option>
+                                                        <option selected>Minor (bruises)</option>
+                                                        <option>Moderate (sprains)</option>
+                                                        <option>Severe (fractures)</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-12">
+                                                    <label for="fallCircumstances" class="form-label">Circumstances of Previous Falls</label>
+                                                    <textarea class="form-control" id="fallCircumstances" rows="3" disabled>First fall occurred when getting up at night to use bathroom. Second fall happened while walking down steps carrying laundry.</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Home Environment -->
+                                    <div class="col-12 mb-3">
+                                        <label class="form-label">Home Environment</label>
+                                        <div class="card p-3">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="rugsMats" checked disabled>
+                                                        <label class="form-check-label" for="rugsMats">Loose Rugs/Mats</label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="clutter" checked disabled>
+                                                        <label class="form-check-label" for="clutter">Clutter/Obstacles</label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="stairs" checked disabled>
+                                                        <label class="form-check-label" for="stairs">Stairs without Railings</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="poorLighting" checked disabled>
+                                                        <label class="form-check-label" for="poorLighting">Poor Lighting</label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="bathroomHazards" disabled>
+                                                        <label class="form-check-label" for="bathroomHazards">Bathroom without Grab Bars</label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="slipperyFloors" disabled>
+                                                        <label class="form-check-label" for="slipperyFloors">Slippery Floors</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Additional Information -->
+                                    <div class="col-12 mb-3">
+                                        <label for="additionalInfo" class="form-label">Additional Information</label>
+                                        <textarea class="form-control" id="additionalInfo" rows="3" disabled>Patient expresses anxiety about falling, especially at night. Has difficulty with depth perception. Recently changed blood pressure medication which caused some dizziness initially.</textarea>
+                                    </div>
+                                </div>
+
+                                <!-- System Configuration Section -->
+                                <div class="row mb-4">
+                                    <div class="col-12">
+                                        <h4 class="border-bottom pb-2 mb-3">System Configuration</h4>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="sensitivityLevel" class="form-label">Fall Detection Sensitivity</label>
+                                        <select class="form-select" id="sensitivityLevel" disabled>
+                                            <option>Low</option>
+                                            <option selected>Medium</option>
+                                            <option>High</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="notificationPreference" class="form-label">Notification Preference</label>
+                                        <select class="form-select" id="notificationPreference" disabled>
+                                            <option>Emergency Contact Only</option>
+                                            <option selected>Emergency Contact + Care Provider</option>
+                                            <option>Emergency Services Immediately</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="confirmationTime" class="form-label">Alert Confirmation Time (seconds)</label>
+                                        <input type="number" class="form-control" id="confirmationTime" value="30" disabled>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="monitoringSchedule" class="form-label">Monitoring Schedule</label>
+                                        <select class="form-select" id="monitoringSchedule" disabled>
+                                            <option>Daytime Only (7AM-10PM)</option>
+                                            <option>Nighttime Only (10PM-7AM)</option>
+                                            <option selected>24/7 Monitoring</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Save Button (hidden by default) -->
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        <button type="submit" class="btn btn-success btn-lg px-5" id="saveProfileBtn" style="display: none;">
+                                            <i class="bi bi-check-circle me-2"></i>Save Changes
+                                        </button>
+                                        <button type="button" class="btn btn-outline-secondary btn-lg px-5 ms-3" id="cancelEditBtn" style="display: none;">
+                                            <i class="bi bi-x-circle me-2"></i>Cancel
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

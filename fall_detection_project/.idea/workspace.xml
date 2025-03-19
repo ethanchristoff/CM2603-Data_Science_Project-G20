@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="babc58e4-9bce-41d9-876a-dc9545fad623" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/dashboard/static/css/dashboard.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard/static/js/dashboard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weekly_report/static/css/weekly-report" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weekly_report/static/js/profile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/camera_feed/templates/camera_feed.html" beforeDir="false" afterPath="$PROJECT_DIR$/camera_feed/templates/camera_feed.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/templates/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weekly_report/static/css/weekly-report.css" beforeDir="false" afterPath="$PROJECT_DIR$/weekly_report/static/css/weekly-report.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weekly_report/templates/weekly-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/weekly_report/templates/weekly-report.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/weekly_report/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/weekly_report/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weekly_report/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/weekly_report/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +163,7 @@
       <workItem from="1742388435665" duration="8699000" />
       <workItem from="1742406416278" duration="206000" />
       <workItem from="1742406703264" duration="1287000" />
-      <workItem from="1742411744642" duration="2093000" />
+      <workItem from="1742411744642" duration="4295000" />
     </task>
     <servers />
   </component>
