@@ -5,18 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="babc58e4-9bce-41d9-876a-dc9545fad623" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/dashboard/management/commands/run_pipeline.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard/management/commands/run_simulator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard/routing.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/fall_detection_project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fall_detection_project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/camera_feed/static/CSS/camera.css" beforeDir="false" afterPath="$PROJECT_DIR$/camera_feed/static/CSS/camera.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/consumers.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/consumers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/templates/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fall_detection_project/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/fall_detection_project/asgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fall_detection_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/fall_detection_project/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/camera_feed/templates/camera_feed.html" beforeDir="false" afterPath="$PROJECT_DIR$/camera_feed/templates/camera_feed.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weekly_report/templates/weekly-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/weekly_report/templates/weekly-report.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,32 +36,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.motion_data_pipeline.executor&quot;: &quot;Run&quot;,
-    &quot;Python.motion_simulation.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;P1-Feature-Branch&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Senuli/Desktop/env&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.intellij.pycharm.community.ide.impl.configuration.PythonContentEntriesConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.motion_data_pipeline.executor": "Run",
+    "Python.motion_simulation.executor": "Run",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "django.template.preview.state": "SHOW_EDITOR",
+    "git-widget-placeholder": "P1-Feature-Branch",
+    "last_opened_file_path": "C:/Users/Senuli/Desktop/env/Sensor/CM2603-Data_Science_Project-G20/fall_detection_project",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.intellij.pycharm.community.ide.impl.configuration.PythonContentEntriesConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Senuli\Desktop\env\Sensor\CM2603-Data_Science_Project-G20\fall_detection_project\simulators" />
       <recent name="C:\Users\Senuli\Desktop\env\Sensor\CM2603-Data_Science_Project-G20\fall_detection_project\dashboard\simulators" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.motion_data_pipeline">
+  <component name="RunManager" selected="Django Server.fall_detection_project">
     <configuration name="motion_data_pipeline" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="fall_detection_project" />
       <option name="ENV_FILES" value="" />
@@ -167,6 +159,7 @@
       <workItem from="1742388435665" duration="8699000" />
       <workItem from="1742406416278" duration="206000" />
       <workItem from="1742406703264" duration="1287000" />
+      <workItem from="1742411744642" duration="1311000" />
     </task>
     <servers />
   </component>
