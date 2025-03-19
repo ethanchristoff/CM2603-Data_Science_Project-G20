@@ -1,0 +1,194 @@
+/* =======================================================
+   CSS Variables
+   ======================================================= */
+:root {
+  --primary-color: #0d47a1;
+  --secondary-color: #1565c0;
+  --accent-color: #42a5f5;
+  --light-bg: #f0f6fc;
+  --text-light: #e3f2fd;
+  --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --transition: all 0.3s ease;
+}
+
+/* =======================================================
+   Base & Global Styles
+   ======================================================= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--light-bg);
+  color: var(--primary-color);
+  line-height: 1.6;
+}
+
+/* =======================================================
+   Navigation Bar
+   ======================================================= */
+.navbar {
+  background: var(--primary-color);
+  padding: 0.8rem 1rem;
+  box-shadow: var(--shadow-sm);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+.navbar-brand {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-light);
+}
+.navbar .btn-link {
+  color: var(--text-light);
+  transition: var(--transition);
+}
+.navbar .btn-link:hover { opacity: 0.9; }
+
+/* =======================================================
+   Sidebar
+   ======================================================= */
+.sidebar {
+  width: 220px;
+  height: calc(100vh - 56px);
+  position: fixed;
+  top: 56px;
+  left: 0;
+  background: var(--secondary-color);
+  padding: 1rem 0;
+  transition: var(--transition);
+  z-index: 999;
+}
+.sidebar.collapsed { transform: translateX(-100%); }
+.nav-link {
+  padding: 0.75rem 1.5rem;
+  color: var(--text-light);
+  border-radius: 6px;
+  margin: 0.25rem 1rem;
+  transition: var(--transition);
+}
+.nav-link:hover { background: rgba(255, 255, 255, 0.1); }
+.nav-link.active {
+  background: var(--accent-color);
+  font-weight: 500;
+}
+
+/* =======================================================
+   Main Content Area
+   ======================================================= */
+.main-content {
+  margin: 56px 0 0 220px;
+  padding: 2rem;
+  transition: var(--transition);
+}
+.main-content.expanded { margin-left: 0; }
+.news-bar {
+  background: var(--secondary-color);
+  color: var(--text-light);
+  padding: 0.75rem;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+/* =======================================================
+   Camera Feed Display
+   ======================================================= */
+.camera-feed {
+  background: #bbdefb;
+  border-radius: 12px;
+  aspect-ratio: 16/9;
+  display: grid;
+  place-items: center;
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+/* =======================================================
+   Recordings Slider
+   ======================================================= */
+.recordings-section {
+  margin-top: 30px;
+  padding: 20px;
+  background: #f7f7f7;
+  border-radius: 12px;
+}
+.recordings-section h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #2c5282;
+}
+.slider-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.slider-wrapper { overflow: hidden; width: 100%; }
+.slider {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.4s ease-in-out;
+}
+.video-wrapper {
+  flex: 0 0 auto;
+  width: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.video-wrapper video {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* =======================================================
+   Navigation Controls (Buttons remain unchanged)
+   ======================================================= */
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: var(--transition);
+  opacity: 0.9;
+  z-index: 10; /* Ensures buttons are always clickable on top */
+}
+
+.prev:hover, .next:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.prev { left: -20px; }
+.next { right: -20px; }
+
+
+/* =======================================================
+   Responsive Styles
+   ======================================================= */
+@media (max-width: 768px) {
+  .sidebar { width: 280px; transform: translateX(-100%); }
+  .sidebar.collapsed { transform: translateX(0); }
+  .main-content { margin-left: 0; padding: 1rem; }
+  .camera-feed { aspect-ratio: 4/3; font-size: 1.25rem; }
+  .prev, .next { display: none; }
+  .slider { gap: 1rem; }
+}
+@media (max-width: 480px) {
+  .navbar-brand { font-size: 1rem; }
+  .video-wrapper { width: 85vw; }
+}
