@@ -1,3 +1,4 @@
+{% comment %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -168,6 +169,163 @@
                                     Camera 1
                                 </div>
                                 <span class="text-muted">Room 1</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>{% endcomment %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fall Detection System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  <!-- Chart.js -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/weekly-report.css' %}">
+    <script src="{% static 'js/weekly-report.js' %}" defer></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <button class="btn btn-link text-white" id="sidebarToggle">
+                <i class="bi bi-list fs-4"></i>
+            </button>
+            <a class="navbar-brand ms-3" href="#">FallGuard Pro</a>
+            <div class="ms-auto d-flex align-items-center">
+                <div class="position-relative me-4">
+                    <i class="bi bi-bell text-white fs-5"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        3
+                    </span>
+                </div>
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" style="background-color: rgba(255,255,255,0.1); border: none;">
+                        <div class="bg-white text-dark rounded-circle d-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
+                            JD
+                        </div>
+                        <span class="text-white">John</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="/weekly_report/profile/">Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar text-white" id="sidebar">
+        <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{% url 'dashboard' %}">
+                    <i class="bi bi-speedometer2 me-2"></i>Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white active" href="#">
+                    <i class="bi bi-bar-chart me-2"></i>Weekly Report
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{% url 'camera_feed' %}">
+                    <i class="bi bi-camera-video me-2"></i>Live Feed
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#">
+                    <i class="bi bi-gear me-2"></i>Settings
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#">
+                    <i class="bi bi-question-circle me-2"></i>Help
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <main class="main-content" id="mainContent">
+        <!-- Print Button -->
+        <button class="btn btn-primary print-button no-print" onclick="generatePDF()" id="printButton">
+            <i class="bi bi-printer me-2"></i>Download Report as PDF
+        </button>
+
+        <h2 class="m-2 mb-4 weekly-report-h2">Weekly Report</h2>
+
+        <!-- Charts -->
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Falls and Risk Alerts (Weekly)</h5>
+                        <p class="text-muted small">Shows actual falls (red) and preventive risk alerts (yellow) detected each day.</p>
+                        <div class="chart-container">
+                            <canvas id="fallsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Vital Signs Monitoring</h5>
+                        <p class="text-muted small">Tracks average heart rate (blue) and blood oxygen levels (green) throughout the week.</p>
+                        <div class="chart-container">
+                            <canvas id="heartRateChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Daily Movement Trend</h5>
+                        <p class="text-muted small">Shows how much the person moves each day compared to what's normal for them. Higher numbers mean more movement.</p>
+                        <div class="chart-container">
+                            <canvas id="movementChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Active Monitors</h5>
+                        <p class="text-muted small">Shows all monitoring devices currently active in the system</p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="status-dot bg-success me-2"></span>
+                                    Camera 2
+                                </div>
+                                <span class="text-muted">Bedroom</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="status-dot bg-success me-2"></span>
+                                    Wearable Sensor
+                                </div>
+                                <span class="text-muted">Wrist Device</span>
                             </li>
                         </ul>
                     </div>
