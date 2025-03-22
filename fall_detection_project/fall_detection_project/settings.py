@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'camera_feed',
     'dashboard',
-    'weekly_report'
+    'weekly_report',
+    'profile_page'
 ]
 
 MIDDLEWARE = [
