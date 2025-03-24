@@ -1,193 +1,234 @@
 {% load static %}
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fall Detection System</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
     <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      defer
+    ></script>
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
     <script src="{% static 'js/dashboard.js' %}" defer></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container-fluid">
-            <button class="btn btn-link text-white" id="sidebarToggle">
-                <i class="bi bi-list fs-4"></i>
+      <div class="container-fluid">
+        <button class="btn btn-link text-white" id="sidebarToggle">
+          <i class="bi bi-list fs-4"></i>
+        </button>
+        <a class="navbar-brand ms-3" href="#">FallGuard Pro</a>
+        <div class="ms-auto d-flex align-items-center">
+          <div class="position-relative me-4">
+            <i class="bi bi-bell text-white fs-5"></i>
+            <span
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            >
+              3
+            </span>
+          </div>
+          <div class="dropdown">
+            <button
+              class="btn dropdown-toggle d-flex align-items-center"
+              type="button"
+              data-bs-toggle="dropdown"
+              style="background-color: rgba(255, 255, 255, 0.1); border: none"
+            >
+              <div
+                class="bg-white text-dark rounded-circle d-flex align-items-center justify-content-center me-2"
+                style="width: 32px; height: 32px"
+              >
+                JD
+              </div>
+              <span class="text-white">John</span>
             </button>
-            <a class="navbar-brand ms-3" href="#">FallGuard Pro</a>
-            <div class="ms-auto d-flex align-items-center">
-                <div class="position-relative me-4">
-                    <i class="bi bi-bell text-white fs-5"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        3
-                    </span>
-                </div>
-                <div class="dropdown">
-                    <button class="btn dropdown-toggle d-flex align-items-center" type="button"
-                        data-bs-toggle="dropdown" style="background-color: rgba(255,255,255,0.1); border: none;">
-                        <div class="bg-white text-dark rounded-circle d-flex align-items-center justify-content-center me-2"
-                            style="width: 32px; height: 32px;">
-                            JD
-                        </div>
-                        <span class="text-white">John</span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
-                    </ul>
-                </div>
-            </div>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li><a class="dropdown-item" href="#">Logout</a></li>
+            </ul>
+          </div>
         </div>
+      </div>
     </nav>
 
     <!-- Sidebar -->
     <div class="sidebar text-white" id="sidebar">
-        <ul class="nav nav-pills flex-column">
-            <li class="nav-item">
-                <a class="nav-link active" href="#">
-                    <i class="bi bi-speedometer2 me-2"></i>Dashboard
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'weekly-report' %}">
-                    <i class="bi bi-bar-chart me-2"></i>Weekly Report
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'camera_feed' %}">
-                    <i class="bi bi-camera-video me-2"></i>Live Feed
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="bi bi-gear me-2"></i>Settings
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="bi bi-question-circle me-2"></i>Help
-                </a>
-            </li>
-        </ul>
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">
+            <i class="bi bi-speedometer2 me-2"></i>Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'weekly-report' %}">
+            <i class="bi bi-bar-chart me-2"></i>Weekly Report
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'camera_feed' %}">
+            <i class="bi bi-camera-video me-2"></i>Live Feed
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="bi bi-gear me-2"></i>Settings
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="bi bi-question-circle me-2"></i>Help
+          </a>
+        </li>
+      </ul>
     </div>
 
     <div class="main-content" id="mainContent">
-        <!-- Status Alert -->
-        <div class="row mb-1">
-            <div class="col-12">
-                <div id="fallAlert" class="alert alert-safe p-3 text-center fw-bold">
-                    <i class="bi bi-shield-check me-2"></i> Client Status: Normal - No Fall Detected
-                </div>
-            </div>
+      <!-- Status Alert -->
+      <div class="row mb-1">
+        <div class="col-12">
+          <div id="fallAlert" class="alert alert-safe p-3 text-center fw-bold">
+            <i class="bi bi-shield-check me-2"></i> Client Status: Normal - No
+            Fall Detected
+          </div>
         </div>
+      </div>
 
-        <div class="row mb-1">
-            <!-- Summary Cards -->
-            <div class="col-md-6 mb-2">
-                <div class="card vital-card h-100">
-                    <!-- Motion Data card body -->
-                    <div class="card-header text-white">
-                        <h5 class="card-title mb-0"><i class="bi bi-person-walking me-2"></i>Movement Activity</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <div>
-                                <span id="motionStatus" class="badge bg-success">Normal Activity</span>
-                            </div>
-                            <div>
-                                <span class="badge bg-light text-dark">
-                                    <i class="bi bi-activity text-primary me-1"></i>Movement Level
-                                </span>
-                            </div>
-                        </div>
-                        <div class="chart-container">
-                            <canvas id="motionChart"></canvas>
-                        </div>
-                    </div>
-                </div>
+      <div class="row mb-1">
+        <!-- Summary Cards -->
+        <div class="col-md-6 mb-2">
+          <div class="card vital-card h-100">
+            <!-- Motion Data card body -->
+            <div class="card-header text-white">
+              <h5 class="card-title mb-0">
+                <i class="bi bi-person-walking me-2"></i>Movement Activity
+              </h5>
             </div>
-            <div class="col-md-6 mb-2   ">
-                <div class="card vital-card h-100">
-                    <div class="card-header text-white">
-                        <h5 class="card-title mb-0"><i class="bi bi-heart-pulse me-2"></i>Heart Rate</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <div>
-                                <span id="heartRateValue" class="vital-value">72</span>
-                                <span class="vital-unit">bpm</span>
-                            </div>
-                            <span id="heartRateStatus" class="badge bg-success">Normal</span>
-                        </div>
-                        <div class="chart-container">
-                            <canvas id="heartRateChart"></canvas>
-                        </div>
-                    </div>
+            <div class="card-body">
+              <p class="text-muted small">Tracks real-time movement levels. Higher values indicate more activity, while sudden changes may signal potential issues.</p>
+              <div
+                class="d-flex justify-content-between align-items-center mb-3"
+              >
+                <div>
+                  <span id="motionStatus" class="badge bg-success"
+                    >Normal Activity</span
+                  >
                 </div>
+                <div>
+                  <span class="badge bg-light text-dark">
+                    <i class="bi bi-activity text-primary me-1"></i>Movement
+                    Level
+                  </span>
+                </div>
+              </div>
+              <div class="chart-container">
+                <canvas id="motionChart"></canvas>
+              </div>
             </div>
+          </div>
         </div>
+        <div class="col-md-6 mb-2">
+          <div class="card vital-card h-100">
+            <div class="card-header text-white">
+              <h5 class="card-title mb-0">
+                <i class="bi bi-heart-pulse me-2"></i>Heart Rate
+              </h5>
+            </div>
+            <div class="card-body">
+              <p class="text-muted small">Shows live heart rate in beats per minute. Normal range is typically 60-100 bpm. Alerts trigger if abnormal.</p>
+              <div
+                class="d-flex justify-content-between align-items-center mb-3"
+              >
+                <div>
+                  <span id="heartRateValue" class="vital-value">72</span>
+                  <span class="vital-unit">bpm</span>
+                </div>
+                <span id="heartRateStatus" class="badge bg-success"
+                  >Normal</span
+                >
+              </div>
+              <div class="chart-container">
+                <canvas id="heartRateChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-        <div class="row mb-1">
-            <div class="col-md-6 mb-2">
-                <div class="card vital-card h-100">
-                    <div class="card-header text-white">
-                        <h5 class="card-title mb-0"><i class="bi bi-lungs me-2"></i>SpO2 Level</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <div>
-                                <span id="spo2Value" class="vital-value">98</span>
-                                <span class="vital-unit">%</span>
-                            </div>
-                            <span id="spo2Status" class="badge bg-success">Normal</span>
-                        </div>
-                        <div class="chart-container">
-                            <canvas id="spo2Chart"></canvas>
-                        </div>
-                    </div>
-                </div>
+      <div class="row mb-1">
+        <div class="col-md-6 mb-2">
+          <div class="card vital-card h-100">
+            <div class="card-header text-white">
+              <h5 class="card-title mb-0">
+                <i class="bi bi-lungs me-2"></i>SpO2 Level
+              </h5>
             </div>
-            <div class="col-md-6 mb-2">
-                <div class="card vital-card h-100">
-                    <div class="card-header text-white">
-                        <h5 class="card-title mb-0"><i class="bi bi-shield-exclamation me-2"></i>Fall Risk Assessment
-                        </h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <div>
-                                <span id="riskLevel" class="vital-value">Low</span>
-                                <span class="vital-unit">risk</span>
-                            </div>
-                            <span id="riskStatus" class="badge bg-success">Safe</span>
-                        </div>
-                        <div class="progress mb-3" style="height: 20px;">
-                            <div id="riskProgress" class="progress-bar bg-success" role="progressbar"
-                                style="width: 15%;"></div>
-                        </div>
-                        <div class="d-flex justify-content-between text-muted">
-                            <small>Low Risk</small>
-                            <small>Moderate Risk</small>
-                            <small>High Risk</small>
-                        </div>
-                    </div>
+            <div class="card-body">
+              <p class="text-muted small">Monitors blood oxygen saturation. Normal levels are 95% or above. Lower values may indicate respiratory issues.</p>
+              <div
+                class="d-flex justify-content-between align-items-center mb-3"
+              >
+                <div>
+                  <span id="spo2Value" class="vital-value">98</span>
+                  <span class="vital-unit">%</span>
                 </div>
+                <span id="spo2Status" class="badge bg-success">Normal</span>
+              </div>
+              <div class="chart-container">
+                <canvas id="spo2Chart"></canvas>
+              </div>
             </div>
+          </div>
         </div>
+        <!-- Fall Detection Chart -->
+        <div class="col-md-6 mb-2">
+          <div class="card vital-card h-100">
+            <div class="card-header text-white">
+              <h5 class="card-title mb-0">
+                <i class="bi bi-graph-up me-2"></i>Fall Detection History
+              </h5>
+            </div>
+            <div class="card-body">
+              <p class="text-muted small">Displays recent fall status. Red lines indicate detected falls, yellow lines show fall risk periods, and blue represents normal status.</p>
+              <div
+                class="d-flex justify-content-between align-items-center mb-3"
+              >
+                <div>
+                  <span id="fallDetectionStatus" class="badge bg-success"
+                    >No Fall</span
+                  >
+                </div>
+                <div>
+                  <span class="badge bg-light text-dark">
+                    <i class="bi bi-clock-history text-primary me-1"></i>Recent
+                    History
+                  </span>
+                </div>
+              </div>
+              <div class="chart-container">
+                <canvas id="fallDetectionChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>
