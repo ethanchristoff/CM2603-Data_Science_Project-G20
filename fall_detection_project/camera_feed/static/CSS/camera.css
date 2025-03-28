@@ -1,244 +1,228 @@
-/* =======================================================
-   CSS Variables
-   ======================================================= */
 :root {
   --primary-color: #2c5282;
-  --primary-dark: #234876;
-  --primary-light: #3182ce;
-  --light-bg: #f8f9fa;
-  --text-light: white;
-  --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.2);
-  --transition: all 0.3s ease;
+  --primary-dark: #1a365d;
+  --success-color: #38a169;
+  --danger-color: #e53e3e;
+  --light-bg: #f7fafc;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* =======================================================
-   Base & Global Styles
-   ======================================================= */
-* { margin: 0; padding: 0; box-sizing: border-box; }
 body {
-  font-family: 'Segoe UI', system-ui, sans-serif;
-  background: var(--light-bg);
-  color: var(--primary-color);
-  line-height: 1.6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--light-bg);
 }
 
-/* =======================================================
-   Navigation Bar
-   ======================================================= */
 .navbar {
-  background: var(--primary-color) !important;
-  padding: 0.8rem 1rem;
-  box-shadow: var(--shadow-sm);
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
+
 .navbar-brand {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--text-light);
+  font-weight: 700;
+  font-size: 1.5rem;
 }
-.navbar .btn-link {
-  color: var(--text-light);
-  transition: var(--transition);
-}
-.navbar .btn-link:hover { opacity: 0.9; }
 
-/* =======================================================
-   Sidebar
-   ======================================================= */
 .sidebar {
-  width: 250px;
-  height: calc(100vh - 56px);
-  position: fixed;
-  top: 56px;
-  left: 0;
-  background: var(--primary-color) !important;
-  padding: 1rem 0;
-  transition: var(--transition);
-  z-index: 999;
-}
-.sidebar.collapsed { transform: translateX(-250px); }
-
-.nav-link {
-  padding: 10px 20px;
-  color: var(--text-light);
-  border-radius: 6px;
-  margin: 5px 1rem;
-  transition: var(--transition);
-}
-.nav-link:hover { background: var(--primary-dark); }
-.nav-link.active {
-  background: var(--primary-light) !important;
-  font-weight: 500;
+  background: linear-gradient(to bottom, var(--primary-color), var(--primary-dark));
+  transition: all 0.3s ease;
 }
 
-/* =======================================================
-   Main Content Area
-   ======================================================= */
+.sidebar.collapsed {
+  width: 60px !important;
+  overflow: hidden;
+}
+
+.sidebar .nav-link {
+  border-radius: 8px;
+  margin: 5px 10px;
+  transition: all 0.2s;
+}
+
+.sidebar .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar .nav-link.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  font-weight: bold;
+}
+
 .main-content {
-  margin: 56px 0 0 250px;
-  padding: 2rem;
   transition: margin-left 0.3s ease;
 }
-.main-content.expanded { margin-left: 0; }
 
-/* =======================================================
-   Status Indicator
-   ======================================================= */
-.status-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-/* =======================================================
-   Buttons
-   ======================================================= */
-.btn-dark {
-  background-color: var(--primary-dark);
-  border-color: var(--primary-dark);
-}
-
-.btn-dark:hover {
-  background-color: var(--primary-light);
-  border-color: var(--primary-light);
-}
-
-/* =======================================================
-   Camera Feed Display
-   ======================================================= */
-.camera-feed {
-  background: #bbdefb;
-  border-radius: 12px;
-  aspect-ratio: 16/9;
-  display: grid;
-  place-items: center;
-  color: var(--primary-color);
-  margin-bottom: 2rem;
-  box-shadow: var(--shadow-sm);
-}
-
-/* =======================================================
-   Recordings Slider
-   ======================================================= */
-.recordings-section {
-  margin-top: 30px;
-  padding: 20px;
-  background: #f7f7f7;
-  border-radius: 12px;
-}
-.recordings-section h2 {
+.news-bar {
+  background-color: var(--success-color);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
   margin-bottom: 20px;
-  font-size: 1.5rem;
-  color: var(--primary-color);
+  font-weight: 600;
+  transition: background-color 0.5s ease;
+  box-shadow: var(--card-shadow);
 }
-.slider-container {
+
+.camera-feed {
   display: flex;
-  align-items: center;
-  position: relative;
+  justify-content: center;
+  margin: 20px 0;
 }
-.slider-wrapper { overflow: hidden; width: 100%; }
+
+#cameraPlaceholder {
+  display: none !important;
+}
+
+#cameraFeed {
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  max-width: 100%;
+  height: auto;
+}
+
+.control-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 25px 0;
+}
+
+.btn-lg {
+  padding: 12px 24px;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.btn-success {
+  background-color: var(--success-color);
+  border-color: var(--success-color);
+}
+
+.btn-danger {
+  background-color: var(--danger-color);
+  border-color: var(--danger-color);
+}
+
+.btn-success:hover, .btn-danger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn:disabled {
+  opacity: 0.7;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.recordings-section {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 30px;
+  box-shadow: var(--card-shadow);
+}
+
+.recordings-section h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--primary-dark);
+  border-bottom: 2px solid #edf2f7;
+  padding-bottom: 10px;
+}
+
+.slider-container {
+  position: relative;
+  margin: 20px 0;
+}
+
+.slider-wrapper {
+  overflow: hidden;
+  margin: 0 40px;
+}
+
 .slider {
   display: flex;
-  gap: 20px;
-  transition: transform 0.4s ease-in-out;
-}
-.video-wrapper {
-  flex: 0 0 auto;
-  width: 300px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-.video-wrapper video {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
+  transition: transform 0.3s ease;
+  gap: 15px;
 }
 
-/* =======================================================
-   Navigation Controls
-   ======================================================= */
-.prev, .next {
+.video-wrapper {
+  flex: 0 0 auto;
+}
+
+.video-wrapper video {
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+
+.slider-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: var(--primary-dark);
+  background-color: var(--primary-color);
   color: white;
   border: none;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition: var(--transition);
-  opacity: 0.9;
-  z-index: 10;
+  z-index: 1;
+  transition: all 0.2s;
 }
 
-.prev:hover, .next:hover {
-  opacity: 1;
-  transform: translateY(-50%) scale(1.05);
+.slider-btn:hover {
+  background-color: var(--primary-dark);
 }
 
-.prev { left: -20px; }
-.next { right: -20px; }
+.slider-btn.prev {
+  left: 0;
+}
 
-/* =======================================================
-   Print Styles
-   ======================================================= */
-@media print {
-  .navbar, .sidebar, .no-print {
-    display: none !important;
+.slider-btn.next {
+  right: 0;
+}
+
+/* User avatar styling */
+.user-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: #f0f9ff;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border: 2px solid white;
+}
+
+/* Status indicators */
+.status-indicator {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.status-active {
+  background-color: var(--success-color);
+  box-shadow: 0 0 0 2px rgba(56, 161, 105, 0.3);
+}
+
+@media (max-width: 992px) {
+  .sidebar {
+    width: 60px !important;
   }
+  
+  .sidebar.expanded {
+    width: 250px !important;
+  }
+  
   .main-content {
-    margin-left: 0 !important;
-    margin-top: 0 !important;
+    margin-left: 60px !important;
   }
-  .card {
-    break-inside: avoid;
-  }
-}
-
-/* =======================================================
-   Print Button
-   ======================================================= */
-.print-button {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 1000;
-  padding: 15px 25px;
-  border-radius: 50px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  background-color: var(--primary-light) !important;
-  border-color: var(--primary-light) !important;
-}
-
-.print-button:hover {
-  background-color: var(--primary-color) !important;
-  border-color: var(--primary-color) !important;
-}
-
-/* =======================================================
-   Responsive Styles
-   ======================================================= */
-@media (max-width: 768px) {
-  .sidebar { transform: translateX(-250px); }
-  .sidebar.active { transform: translateX(0); }
-  .main-content { margin-left: 0; padding: 1rem; }
-  .camera-feed { aspect-ratio: 4/3; font-size: 1.25rem; }
-  .prev, .next { display: none; }
-  .slider { gap: 1rem; }
-}
-
-@media (max-width: 480px) {
-  .navbar-brand { font-size: 1rem; }
-  .video-wrapper { width: 85vw; }
 }
