@@ -11,6 +11,7 @@ from django.conf import settings
 from django.http import StreamingHttpResponse, JsonResponse
 from django.shortcuts import render
 from django.core.cache import cache
+import subprocess
 
 def get_camera_page(request):
     recordings_dir = os.path.join(settings.MEDIA_ROOT, 'recordings')
@@ -25,6 +26,7 @@ def get_camera_page(request):
     }
 
     return render(request, "camera_feed.html", context)
+
 
 def gen_frames():
     model_dir = os.path.join(settings.BASE_DIR, 'camera_feed', 'static', 'KNN_model')
@@ -48,16 +50,16 @@ def gen_frames():
         print("Error: Could not open camera.")
         return
 
-    # Set up directories
+    # Create necessary directories
     recordings_dir = os.path.join(settings.MEDIA_ROOT, 'recordings')
     os.makedirs(recordings_dir, exist_ok=True)
+
     os.makedirs(settings.MEDIA_ROOT, exist_ok=True)
 
-    # Use a fixed filename instead of generating a new one
+    # Generate a unique log file with timestamp
+    timestamp_str = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     log_filename = 'fall_detection_log.csv'
     log_path = os.path.join(settings.MEDIA_ROOT, log_filename)
-
-    file_exists = os.path.isfile(log_path)
 
     fall_start_time = None
     recording = False
@@ -65,11 +67,12 @@ def gen_frames():
     fall_video_writer = None
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
 
-    # Overwrite the same file each time
+    file_exists = os.path.isfile(log_path)
+
     with open(log_path, 'a', newline='') as log_file:
         writer = csv.writer(log_file)
-        if not file_exists:  
-            writer.writerow(["Timestamp", "Status"])  
+        if not file_exists:
+            writer.writerow(["Timestamp", "Status"]) 
 
         with mp_pose.Pose(min_detection_confidence=0.3, min_tracking_confidence=0.3) as pose:
             while True:
@@ -105,19 +108,23 @@ def gen_frames():
                     ])
 
                     features_input_scaled = scaler.transform([features_input])
+                    '''
+                    To output a real time feed from the code below the prediction variable consists of the prediction
+                    made by the model, simply output that onto a graph and you'll get either a 1 (fall) or 0 (non-fall)
+                    '''
                     prediction = knn_model.predict(features_input_scaled)[0]
                     label = "Falling" if prediction == 1 else "Not Falling"
                     fall_detected = True if prediction == 1 else False
 
                     current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                    writer.writerow([current_time, 1 if fall_detected else 0])  # Overwrite previous file content
+                    writer.writerow([current_time, 1 if fall_detected else 0])  # Store falls as 1, non-falls as 0
 
                     cache.set('fall_detected', fall_detected, timeout=10)
 
                     if prediction == 1:
                         if fall_start_time is None:
                             fall_start_time = time.time()
-                            video_filename = os.path.join(recordings_dir, "fall_recording.mp4")
+                            video_filename = os.path.join(recordings_dir, f"fall_{timestamp_str}.mp4")
                             fall_video_writer = cv2.VideoWriter(video_filename, fourcc, 20.0, (640, 480))
                             recording = True
 
