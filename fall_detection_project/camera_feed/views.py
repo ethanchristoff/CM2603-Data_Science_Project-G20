@@ -11,9 +11,35 @@ from django.conf import settings
 from django.http import StreamingHttpResponse, JsonResponse
 from django.shortcuts import render
 from django.core.cache import cache
-import subprocess
+import os
+import psutil
+
+
+
 
 def get_camera_page(request):
+    print("Stopping Background theads...")
+    PID_FILE = "process.pid"
+
+    if os.path.exists(PID_FILE):
+        with open(PID_FILE, "r") as f:
+            pid = int(f.read().strip())
+
+        try:
+            process = psutil.Process(pid)
+            process.terminate()  # Gracefully stop the process
+            process.wait()  # Ensure process is stopped
+
+            os.remove(PID_FILE)
+            print(f"Stopped process with PID: {pid}")
+
+        except psutil.NoSuchProcess:
+            print(f"No process found with PID {pid}")
+            os.remove(PID_FILE)
+
+    else:
+        print("No running process found.")
+
     recordings_dir = os.path.join(settings.MEDIA_ROOT, 'recordings')
     
     video_files = []
