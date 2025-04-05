@@ -1,21 +1,33 @@
+import threading
+import subprocess
+import os
+import psutil
 from django.shortcuts import render
-from django.http import JsonResponse
-from .acc_gyro_component import latest_sensor_data
-# Create your views here.
+
+PID_FILE = "process.pid"
+
+def run_background_task():
+    if os.path.exists(PID_FILE):
+        with open(PID_FILE, "r") as f:
+            try:
+                pid = int(f.read().strip())
+                if psutil.pid_exists(pid):  
+                    print(f"Process is already running with PID: {pid}")
+                    return  
+                else:
+                    os.remove(PID_FILE)  
+            except ValueError:
+                os.remove(PID_FILE)  
+
+    process = subprocess.Popen(["python", "dashboard/dashboard_functions_bg.py"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    
+    with open(PID_FILE, "w") as f:
+        f.write(str(process.pid))
+    
+    print(f"Process started with PID: {process.pid}")
 
 def dashboard(request):
+    thread = threading.Thread(target=run_background_task, daemon=True)
+    thread.start()
+    
     return render(request, "dashboard.html")
-
-def get_sensor_data(request):
-    """API endpoint for getting latest sensor data (for initial load)"""
-    data = latest_sensor_data.copy()
-    
-    # Add calculated values
-    data['heart_rate'] = calculate_heart_rate(data)
-    data['spo2'] = calculate_spo2(data)
-    data['movement_level'] = calculate_movement_level(data)
-    
-    return JsonResponse(data)
-
-# Import the calculation functions from consumers.py
-from .consumers import calculate_heart_rate, calculate_spo2, calculate_movement_level

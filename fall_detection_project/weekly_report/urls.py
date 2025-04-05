@@ -7,6 +7,5 @@ urlpatterns = [
     path('', views.weekly_report, name='weekly-report')
 ]
 
-
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

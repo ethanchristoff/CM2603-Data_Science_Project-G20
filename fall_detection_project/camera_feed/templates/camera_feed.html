@@ -42,7 +42,7 @@
                         <span class="text-white">John</span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="/weekly_report/profile/">Profile</a></li>
+                        <li><a class="dropdown-item" href="{% url 'profile_page' %}">Profile</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -87,7 +87,7 @@
     <!-- Main Content -->
     <main class="main-content" style="margin-left: 250px; padding: 20px; margin-top: 56px;">
         <div class="news-bar alert-safe" id="newsBar">
-            <p id="newsText">System is monitoring for falls...</p>
+            <p id="newsText"><i class="bi bi-shield-check me-2"></i>1System is monitoring for falls...</p>
         </div>
 
         <!-- Start & Stop Buttons -->
@@ -103,7 +103,7 @@
 
         <script>
             function checkFallStatus() {
-                console.log("Checking fall status..."); // Debugging log
+                console.log("Checking fall status..."); 
 
                 fetch('/camera_feed/get_fall_status/')
                     .then(response => response.json())
@@ -115,12 +115,12 @@
 
                         if (data.fall_detected) {
                             newsBar.classList.remove('alert-safe');
-                            newsText.classList.add('alert-danger');
-                            newsText.innerText = 'Fall Detected! Immediate action required.';
+                            newsBar.classList.add('alert-danger');
+                            newsText.innerHTML = '<i class="bi bi-exclamation-triangle me-2"></i>Fall Detected! Immediate action required.';
                         } else {
                             newsBar.classList.remove('alert-danger');
                             newsBar.classList.add('alert-safe');
-                            newsText.innerText = 'No Falls Detected. All clear.';
+                            newsText.innerHTML = '<i class="bi bi-shield-check me-2"></i>No Falls Detected. All clear.';
                         }
                     })
                     .catch(error => console.error('Error fetching fall status:', error));
@@ -138,7 +138,7 @@
             });
 
             stopButton.addEventListener('click', () => {
-                cameraFeed.src = '';  // Stops the feed
+                cameraFeed.src = '';  
                 cameraFeed.style.display = 'none';
                 startButton.disabled = false;
                 stopButton.disabled = true;
@@ -150,8 +150,20 @@
                 setInterval(checkFallStatus, 5000);
             });
 
-            document.getElementById("toggleSidebar").addEventListener("click", function () {
-                document.getElementById("sidebar").classList.toggle("collapsed");
+            document.addEventListener('DOMContentLoaded', function() {
+                const toggleButton = document.getElementById("sidebarToggle");
+                const sidebar = document.getElementById("sidebar");
+                
+                let isCollapsed = false;
+                
+                toggleButton?.addEventListener("click", function() {
+                    isCollapsed = !isCollapsed;
+                    
+                    sidebar.style.transform = isCollapsed ? 'translateX(-100%)' : 'translateX(0)';
+                    sidebar.style.transition = 'transform 0.3s ease-in-out';
+                    
+                    this.setAttribute('aria-expanded', !isCollapsed);
+                });
             });
         </script>
 

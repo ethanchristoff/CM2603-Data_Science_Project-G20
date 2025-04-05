@@ -11,8 +11,35 @@ from django.conf import settings
 from django.http import StreamingHttpResponse, JsonResponse
 from django.shortcuts import render
 from django.core.cache import cache
+import os
+import psutil
+
+
+
 
 def get_camera_page(request):
+    print("Stopping Background theads...")
+    PID_FILE = "process.pid"
+
+    if os.path.exists(PID_FILE):
+        with open(PID_FILE, "r") as f:
+            pid = int(f.read().strip())
+
+        try:
+            process = psutil.Process(pid)
+            process.terminate()  # Gracefully stop the process
+            process.wait()  # Ensure process is stopped
+
+            os.remove(PID_FILE)
+            print(f"Stopped process with PID: {pid}")
+
+        except psutil.NoSuchProcess:
+            print(f"No process found with PID {pid}")
+            os.remove(PID_FILE)
+
+    else:
+        print("No running process found.")
+
     recordings_dir = os.path.join(settings.MEDIA_ROOT, 'recordings')
     
     video_files = []
@@ -25,6 +52,7 @@ def get_camera_page(request):
     }
 
     return render(request, "camera_feed.html", context)
+
 
 def gen_frames():
     model_dir = os.path.join(settings.BASE_DIR, 'camera_feed', 'static', 'KNN_model')
@@ -56,7 +84,7 @@ def gen_frames():
 
     # Generate a unique log file with timestamp
     timestamp_str = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    log_filename = f'fall_detection_log_{timestamp_str}.csv'
+    log_filename = 'fall_detection_log.csv'
     log_path = os.path.join(settings.MEDIA_ROOT, log_filename)
 
     fall_start_time = None
@@ -65,9 +93,12 @@ def gen_frames():
     fall_video_writer = None
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
 
-    with open(log_path, 'w', newline='') as log_file:
+    file_exists = os.path.isfile(log_path)
+
+    with open(log_path, 'a', newline='') as log_file:
         writer = csv.writer(log_file)
-        writer.writerow(["Timestamp", "Status"])  
+        if not file_exists:
+            writer.writerow(["Timestamp", "Status"]) 
 
         with mp_pose.Pose(min_detection_confidence=0.3, min_tracking_confidence=0.3) as pose:
             while True:

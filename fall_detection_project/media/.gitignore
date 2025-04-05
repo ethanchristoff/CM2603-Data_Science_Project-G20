@@ -1,0 +1,11 @@
+# Camera Feed logs
+camera_log.csv
+fall_detection_log.csv
+
+# Dashboard Logs
+dashboard_logs/*
+!dashboard_logs/.gitkeep
+
+# Camera Feed Recordings
+recordings/*
+!recordings/.gitkeep
