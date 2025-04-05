@@ -1,0 +1,534 @@
+2025-04-04 17:43:23,263 - [DEBUG] Gyro thread started.
+2025-04-04 17:43:28,718 - [DEBUG] Buffer filling: 100/1000
+2025-04-04 17:43:33,889 - [DEBUG] Buffer filling: 200/1000
+2025-04-04 17:43:39,078 - [DEBUG] Buffer filling: 300/1000
+2025-04-04 17:43:44,283 - [DEBUG] Buffer filling: 400/1000
+2025-04-04 17:43:49,617 - [DEBUG] Buffer filling: 500/1000
+2025-04-04 17:43:54,942 - [DEBUG] Buffer filling: 600/1000
+2025-04-04 17:44:00,307 - [DEBUG] Buffer filling: 700/1000
+2025-04-04 17:44:05,603 - [DEBUG] Buffer filling: 800/1000
+2025-04-04 17:44:11,029 - [DEBUG] Buffer filling: 900/1000
+2025-04-04 17:44:16,369 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:17,184 - 2025-04-04 17:44:17 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:17,241 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:17,489 - 2025-04-04 17:44:17 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:17,544 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:17,911 - 2025-04-04 17:44:17 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:17,967 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:18,252 - 2025-04-04 17:44:18 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:18,317 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:18,601 - 2025-04-04 17:44:18 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:18,659 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:18,947 - 2025-04-04 17:44:18 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:18,999 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:19,281 - 2025-04-04 17:44:19 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:19,336 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:19,658 - 2025-04-04 17:44:19 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:19,713 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:20,054 - 2025-04-04 17:44:20 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:20,108 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:20,432 - 2025-04-04 17:44:20 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:20,486 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:20,771 - 2025-04-04 17:44:20 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:20,824 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:21,101 - 2025-04-04 17:44:21 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:21,156 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:21,421 - 2025-04-04 17:44:21 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:44:21,475 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:21,755 - 2025-04-04 17:44:21 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:44:21,813 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:22,089 - 2025-04-04 17:44:22 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:44:22,145 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:22,415 - 2025-04-04 17:44:22 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:44:22,468 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:22,734 - 2025-04-04 17:44:22 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:44:22,789 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:23,037 - 2025-04-04 17:44:23 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:44:23,092 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:23,353 - 2025-04-04 17:44:23 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:44:23,408 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:23,674 - 2025-04-04 17:44:23 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:44:23,732 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:24,048 - 2025-04-04 17:44:24 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:44:24,106 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:24,381 - 2025-04-04 17:44:24 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:44:24,436 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:24,801 - 2025-04-04 17:44:24 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:44:24,853 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:25,158 - 2025-04-04 17:44:25 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:44:25,212 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:25,490 - 2025-04-04 17:44:25 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:25,546 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:25,809 - 2025-04-04 17:44:25 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:25,863 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:26,125 - 2025-04-04 17:44:26 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:26,182 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:26,466 - 2025-04-04 17:44:26 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:26,519 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:26,786 - 2025-04-04 17:44:26 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:26,840 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:27,150 - 2025-04-04 17:44:27 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:27,203 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:27,458 - 2025-04-04 17:44:27 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:27,518 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:27,786 - 2025-04-04 17:44:27 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:27,840 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:28,109 - 2025-04-04 17:44:28 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:28,166 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:28,440 - 2025-04-04 17:44:28 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:28,494 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:28,764 - 2025-04-04 17:44:28 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:28,818 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:29,111 - 2025-04-04 17:44:29 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:29,165 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:29,443 - 2025-04-04 17:44:29 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:29,498 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:29,773 - 2025-04-04 17:44:29 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:29,830 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:30,085 - 2025-04-04 17:44:30 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:30,145 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:30,487 - 2025-04-04 17:44:30 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:30,551 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:30,831 - 2025-04-04 17:44:30 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:30,885 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:31,157 - 2025-04-04 17:44:31 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:31,209 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:31,485 - 2025-04-04 17:44:31 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:31,547 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:31,826 - 2025-04-04 17:44:31 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:31,881 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:32,140 - 2025-04-04 17:44:32 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:32,201 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:32,466 - 2025-04-04 17:44:32 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:32,526 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:32,788 - 2025-04-04 17:44:32 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:32,853 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:33,136 - 2025-04-04 17:44:33 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:33,190 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:33,467 - 2025-04-04 17:44:33 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:33,521 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:33,860 - 2025-04-04 17:44:33 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:33,918 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:34,236 - 2025-04-04 17:44:34 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:34,305 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:34,589 - 2025-04-04 17:44:34 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:34,648 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:34,909 - 2025-04-04 17:44:34 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:34,977 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:35,263 - 2025-04-04 17:44:35 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:35,317 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:35,567 - 2025-04-04 17:44:35 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:44:35,632 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:35,901 - 2025-04-04 17:44:35 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:44:35,961 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:36,231 - 2025-04-04 17:44:36 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:44:36,286 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:36,554 - 2025-04-04 17:44:36 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:44:36,611 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:36,940 - 2025-04-04 17:44:36 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:44:36,994 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:37,285 - 2025-04-04 17:44:37 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:44:37,344 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:37,611 - 2025-04-04 17:44:37 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:44:37,667 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:37,938 - 2025-04-04 17:44:37 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:44:37,998 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:38,262 - 2025-04-04 17:44:38 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:44:38,317 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:38,653 - 2025-04-04 17:44:38 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:44:38,707 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:39,032 - 2025-04-04 17:44:39 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:44:39,091 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:39,372 - 2025-04-04 17:44:39 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:39,433 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:39,695 - 2025-04-04 17:44:39 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:39,750 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:40,015 - 2025-04-04 17:44:40 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:40,068 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:40,403 - 2025-04-04 17:44:40 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:40,464 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:40,720 - 2025-04-04 17:44:40 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:40,786 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:41,084 - 2025-04-04 17:44:41 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:41,148 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:41,417 - 2025-04-04 17:44:41 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:41,476 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:41,748 - 2025-04-04 17:44:41 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:41,807 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:42,069 - 2025-04-04 17:44:42 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:42,125 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:42,415 - 2025-04-04 17:44:42 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:42,470 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:42,743 - 2025-04-04 17:44:42 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:42,803 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:43,083 - 2025-04-04 17:44:43 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:43,136 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:43,482 - 2025-04-04 17:44:43 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:43,538 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:43,809 - 2025-04-04 17:44:43 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:43,861 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:44,135 - 2025-04-04 17:44:44 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:44,189 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:44,470 - 2025-04-04 17:44:44 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:44,525 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:44,786 - 2025-04-04 17:44:44 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:44,851 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:45,133 - 2025-04-04 17:44:45 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:45,191 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:45,477 - 2025-04-04 17:44:45 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:45,542 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:45,810 - 2025-04-04 17:44:45 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:45,865 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:46,134 - 2025-04-04 17:44:46 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:46,190 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:46,477 - 2025-04-04 17:44:46 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:46,532 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:46,811 - 2025-04-04 17:44:46 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:46,870 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:47,163 - 2025-04-04 17:44:47 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:47,220 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:47,508 - 2025-04-04 17:44:47 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:47,565 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:47,872 - 2025-04-04 17:44:47 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:47,927 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:48,202 - 2025-04-04 17:44:48 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:48,258 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:48,535 - 2025-04-04 17:44:48 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:48,593 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:48,850 - 2025-04-04 17:44:48 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:48,908 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:49,182 - 2025-04-04 17:44:49 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:49,235 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:49,515 - 2025-04-04 17:44:49 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:49,570 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:49,887 - 2025-04-04 17:44:49 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:49,959 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:50,237 - 2025-04-04 17:44:50 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:50,301 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:50,585 - 2025-04-04 17:44:50 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:50,641 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:50,939 - 2025-04-04 17:44:50 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:50,993 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:51,260 - 2025-04-04 17:44:51 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:51,318 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:51,582 - 2025-04-04 17:44:51 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:51,641 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:51,899 - 2025-04-04 17:44:51 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:51,956 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:52,267 - 2025-04-04 17:44:52 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:52,332 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:52,653 - 2025-04-04 17:44:52 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:52,713 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:53,015 - 2025-04-04 17:44:53 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:53,077 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:53,344 - 2025-04-04 17:44:53 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:53,411 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:53,694 - 2025-04-04 17:44:53 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:53,749 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:54,015 - 2025-04-04 17:44:54 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:54,069 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:54,361 - 2025-04-04 17:44:54 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:54,423 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:54,719 - 2025-04-04 17:44:54 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:54,784 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:55,073 - 2025-04-04 17:44:55 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:55,131 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:55,412 - 2025-04-04 17:44:55 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:55,474 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:55,753 - 2025-04-04 17:44:55 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:55,813 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:56,134 - 2025-04-04 17:44:56 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:56,190 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:56,460 - 2025-04-04 17:44:56 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:56,517 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:56,796 - 2025-04-04 17:44:56 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:56,851 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:57,121 - 2025-04-04 17:44:57 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:57,178 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:57,424 - 2025-04-04 17:44:57 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:57,488 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:57,773 - 2025-04-04 17:44:57 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:57,830 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:58,088 - 2025-04-04 17:44:58 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:58,145 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:58,405 - 2025-04-04 17:44:58 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:58,465 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:58,780 - 2025-04-04 17:44:58 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:58,841 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:59,121 - 2025-04-04 17:44:59 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:59,175 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:59,448 - 2025-04-04 17:44:59 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:59,503 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:44:59,782 - 2025-04-04 17:44:59 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:44:59,835 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:00,107 - 2025-04-04 17:45:00 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:00,160 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:00,432 - 2025-04-04 17:45:00 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:00,494 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:00,775 - 2025-04-04 17:45:00 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:00,832 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:01,104 - 2025-04-04 17:45:01 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:01,161 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:01,513 - 2025-04-04 17:45:01 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:01,569 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:01,848 - 2025-04-04 17:45:01 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:01,902 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:02,175 - 2025-04-04 17:45:02 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:02,231 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:02,502 - 2025-04-04 17:45:02 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:02,557 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:02,821 - 2025-04-04 17:45:02 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:02,883 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:03,160 - 2025-04-04 17:45:03 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:03,216 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:03,482 - 2025-04-04 17:45:03 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:45:03,547 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:03,817 - 2025-04-04 17:45:03 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:45:03,871 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:04,208 - 2025-04-04 17:45:04 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:45:04,266 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:04,545 - 2025-04-04 17:45:04 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:45:04,597 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:04,845 - 2025-04-04 17:45:04 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:45:04,899 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:05,200 - 2025-04-04 17:45:05 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:45:05,253 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:05,418 - 2025-04-04 17:45:05 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:45:05,471 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:05,637 - 2025-04-04 17:45:05 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:45:05,690 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:05,840 - 2025-04-04 17:45:05 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:45:05,894 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:06,056 - 2025-04-04 17:45:06 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:45:06,111 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:06,325 - 2025-04-04 17:45:06 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:45:06,389 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:06,556 - 2025-04-04 17:45:06 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:45:06,612 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:06,738 - 2025-04-04 17:45:06 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:45:06,792 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:06,925 - 2025-04-04 17:45:06 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:45:06,979 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:07,124 - 2025-04-04 17:45:07 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:45:07,180 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:07,306 - 2025-04-04 17:45:07 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:45:07,362 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:07,479 - 2025-04-04 17:45:07 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:45:07,532 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:07,681 - 2025-04-04 17:45:07 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:45:07,734 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:07,838 - 2025-04-04 17:45:07 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:45:07,891 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:08,005 - 2025-04-04 17:45:08 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:45:08,063 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:08,186 - 2025-04-04 17:45:08 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:45:08,245 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:08,379 - 2025-04-04 17:45:08 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:45:08,437 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:08,556 - 2025-04-04 17:45:08 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:45:08,608 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:08,808 - 2025-04-04 17:45:08 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:45:08,860 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:08,988 - 2025-04-04 17:45:08 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:45:09,041 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:09,151 - 2025-04-04 17:45:09 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:45:09,210 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:09,344 - 2025-04-04 17:45:09 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:45:09,396 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:09,515 - 2025-04-04 17:45:09 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:45:09,568 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:09,689 - 2025-04-04 17:45:09 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:45:09,741 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:09,854 - 2025-04-04 17:45:09 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:45:09,907 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:10,018 - 2025-04-04 17:45:10 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:45:10,078 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:10,218 - 2025-04-04 17:45:10 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:45:10,271 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:10,420 - 2025-04-04 17:45:10 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:45:10,474 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:10,654 - 2025-04-04 17:45:10 - Gyro Prediction: Fall, Confidence: 0.930754
+2025-04-04 17:45:10,707 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:10,850 - 2025-04-04 17:45:10 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:45:10,903 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:11,034 - 2025-04-04 17:45:11 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:45:11,087 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:11,247 - 2025-04-04 17:45:11 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:45:11,301 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:11,473 - 2025-04-04 17:45:11 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:45:11,529 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:11,670 - 2025-04-04 17:45:11 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:45:11,724 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:11,853 - 2025-04-04 17:45:11 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:45:11,911 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:12,058 - 2025-04-04 17:45:12 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:45:12,112 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:12,234 - 2025-04-04 17:45:12 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:45:12,292 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:12,427 - 2025-04-04 17:45:12 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:45:12,481 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:12,607 - 2025-04-04 17:45:12 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:45:12,666 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:12,789 - 2025-04-04 17:45:12 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:45:12,846 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:12,983 - 2025-04-04 17:45:12 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:45:13,036 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:13,159 - 2025-04-04 17:45:13 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:13,216 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:13,349 - 2025-04-04 17:45:13 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:13,405 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:13,575 - 2025-04-04 17:45:13 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:13,628 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:13,798 - 2025-04-04 17:45:13 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:13,851 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:13,974 - 2025-04-04 17:45:13 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:14,032 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:14,168 - 2025-04-04 17:45:14 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:14,226 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:14,353 - 2025-04-04 17:45:14 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:14,410 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:14,532 - 2025-04-04 17:45:14 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:14,587 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:14,715 - 2025-04-04 17:45:14 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:14,771 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:14,918 - 2025-04-04 17:45:14 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:14,972 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:15,106 - 2025-04-04 17:45:15 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:15,168 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:15,306 - 2025-04-04 17:45:15 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:15,359 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:15,503 - 2025-04-04 17:45:15 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:15,558 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:15,692 - 2025-04-04 17:45:15 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:15,746 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:15,905 - 2025-04-04 17:45:15 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:15,959 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:16,119 - 2025-04-04 17:45:16 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:16,180 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:16,327 - 2025-04-04 17:45:16 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:16,383 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:16,499 - 2025-04-04 17:45:16 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:16,557 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:16,664 - 2025-04-04 17:45:16 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:16,716 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:16,857 - 2025-04-04 17:45:16 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:16,911 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:17,058 - 2025-04-04 17:45:17 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:17,111 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:17,230 - 2025-04-04 17:45:17 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:17,283 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:17,418 - 2025-04-04 17:45:17 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:17,471 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:17,576 - 2025-04-04 17:45:17 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:17,635 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:17,868 - 2025-04-04 17:45:17 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:17,921 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:18,104 - 2025-04-04 17:45:18 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:18,160 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:18,416 - 2025-04-04 17:45:18 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:18,470 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:18,648 - 2025-04-04 17:45:18 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:18,702 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:18,950 - 2025-04-04 17:45:18 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:19,004 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:19,155 - 2025-04-04 17:45:19 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:19,212 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:19,315 - 2025-04-04 17:45:19 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:19,373 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:19,591 - 2025-04-04 17:45:19 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:19,649 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:19,805 - 2025-04-04 17:45:19 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:19,862 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:20,012 - 2025-04-04 17:45:20 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:20,067 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:20,234 - 2025-04-04 17:45:20 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:20,289 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:20,418 - 2025-04-04 17:45:20 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:20,477 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:20,616 - 2025-04-04 17:45:20 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:20,673 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:20,804 - 2025-04-04 17:45:20 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:20,862 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:20,998 - 2025-04-04 17:45:20 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:21,051 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:21,171 - 2025-04-04 17:45:21 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:21,225 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:21,372 - 2025-04-04 17:45:21 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:21,427 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:21,570 - 2025-04-04 17:45:21 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:21,625 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:21,778 - 2025-04-04 17:45:21 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:21,836 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:21,953 - 2025-04-04 17:45:21 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:22,010 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:22,122 - 2025-04-04 17:45:22 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:22,178 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:22,418 - 2025-04-04 17:45:22 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:22,476 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:22,641 - 2025-04-04 17:45:22 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:22,695 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:22,837 - 2025-04-04 17:45:22 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:22,895 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:23,012 - 2025-04-04 17:45:23 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:23,066 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:23,187 - 2025-04-04 17:45:23 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:23,242 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:23,410 - 2025-04-04 17:45:23 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:23,464 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:23,603 - 2025-04-04 17:45:23 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:23,666 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:23,805 - 2025-04-04 17:45:23 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:23,859 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:23,989 - 2025-04-04 17:45:23 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:24,042 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:24,216 - 2025-04-04 17:45:24 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:24,271 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:24,436 - 2025-04-04 17:45:24 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:24,488 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:24,651 - 2025-04-04 17:45:24 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:24,716 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:24,940 - 2025-04-04 17:45:24 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:24,997 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:25,251 - 2025-04-04 17:45:25 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:25,305 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:25,440 - 2025-04-04 17:45:25 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:25,495 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:25,636 - 2025-04-04 17:45:25 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:25,691 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:25,835 - 2025-04-04 17:45:25 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:25,892 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:26,051 - 2025-04-04 17:45:26 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:26,104 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:26,232 - 2025-04-04 17:45:26 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:26,289 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:26,453 - 2025-04-04 17:45:26 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:26,506 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:26,671 - 2025-04-04 17:45:26 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:26,726 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:26,851 - 2025-04-04 17:45:26 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:26,913 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:27,032 - 2025-04-04 17:45:27 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:27,090 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:27,287 - 2025-04-04 17:45:27 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:27,341 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:27,557 - 2025-04-04 17:45:27 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:27,615 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:27,739 - 2025-04-04 17:45:27 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:27,795 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:27,932 - 2025-04-04 17:45:27 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:27,985 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:28,145 - 2025-04-04 17:45:28 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:28,204 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:28,314 - 2025-04-04 17:45:28 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:28,367 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:28,499 - 2025-04-04 17:45:28 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:28,552 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:28,709 - 2025-04-04 17:45:28 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:28,762 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:28,935 - 2025-04-04 17:45:28 - Gyro Prediction: Fall, Confidence: 0.930756
+2025-04-04 17:45:28,988 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:29,089 - 2025-04-04 17:45:29 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:45:29,148 - [DEBUG] Buffer filling: 1000/1000
+2025-04-04 17:45:29,339 - 2025-04-04 17:45:29 - Gyro Prediction: Fall, Confidence: 0.930755
+2025-04-04 17:45:29,392 - [INFO] Gyro thread stopping...
+2025-04-04 17:45:31,171 - [INFO] Shutting down logging and stopping threads...
