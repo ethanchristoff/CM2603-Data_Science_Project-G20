@@ -1,0 +1,15 @@
+[project]
+name = "cm2603-data-science-project-g20"
+version = "1.0.0"
+description = "Fall detection application"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "django>=5.2.2",
+    "mediapipe>=0.10.14",
+    "opencv-python>=4.11.0.86",
+    "pandas>=2.3.0",
+    "psutil>=7.0.0",
+    "scikit-learn>=1.7.0",
+    "tensorflow>=2.19.0",
+]
