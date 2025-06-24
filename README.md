@@ -1,5 +1,3 @@
-# Fallguard PRO Setup Guide
-
 ## Group Members
 | Person No. | IIT ID   | RGU ID  | Student Name                    |
 | ---------- | -------- | ------- | ------------------------------- |
@@ -10,15 +8,16 @@
 
 ## Introduction
 
->This project is a fall detection app capable of detecting if a person is in the process or at a risk of falling in isolated conditions. The premise of this project is to further provide information to health officials and create an alert systen to alert users of their being a risk of the patient falling
+>[!Important]
+>This project is a fall detection app capable of detecting if a person is in the process or at a risk of falling in isolated conditions. The premise of this project is to further provide information to health officials and create an alert system to alert users of their being a risk of the patient falling
 
 To summarize here are the main features of the application:
-- Inclusive of IOT devices such as accelorometers and heart rate sensors
+- Inclusive of IOT devices such as accelerometers and heart rate sensors
 - Inclusive of a computer vision model for joint based fall detections
     - The model is an occlusion model capable of assessing visibility
-- Consists of alert system to send alerts to a users device either through SMS or the website itseld
+- Consists of alert system to send alerts to a users device either through SMS or the website itself
  
-Although fairly new and indecisive, the project is almost completely finished with a few outscopes to satisy before projecting it as a finalized application.
+Although fairly new and indecisive, the project is almost completely finished with a few out scopes to satisfy before projecting it as a finalized application.
 
 ## Features
 ### Dashboard Page
@@ -44,10 +43,10 @@ The system includes a heart rate and SpO2 monitoring model to track vital signs.
 
 These features collectively enhance the application's ability to provide timely alerts and actionable insights to users and health officials.
 
-
 ## Project Management Methodology
 
-The entire project was staged on a Jira board to meet time constraints and distribute workloads in an equittable manner. Furthermore, for a temporary period GitHub projects were staged to set timelines and see how issues were created and distributed over time
+>[!Definition]
+>The entire project was staged on a Jira board to meet time constraints and distribute workloads in an equitable manner. Furthermore, for a temporary period GitHub projects were staged to set timelines and see how issues were created and distributed over time
 
 ## Folder Structure
 
@@ -66,7 +65,7 @@ model_demonstration
 |-camera_model_component-Ethan
 |-|-Camera_Page // Content for html, css, js for the camera page assessment
 |-|-Fall_Detection // Content for EDA carried out to assess fall detection/joint based models performance 
-|=models // content for models for each component
+|-models // content for models for each component
 |-output // output folder for predictions of each model
 |
 Report_Contents // Report related content over time
@@ -88,9 +87,10 @@ Once you've setup UV you can run the following command to setup the dependencies
 uv install -r Requirements.txt
 ```
 
+If you wish to make amends to the code, ensure that you format it such that it adheres to the `ruff.toml` file to adhere to proper coding etiquettes. 
 ## What to run?
 
-To assess the performance of each model look into **model_demonstration**, thereafter to run the app simply run the following commands:
+To assess the performance of each model look into **model demonstration**, thereafter to run the app simply run the following commands:
 
 1. When in the `CM2603-DATA_SCIENCE_PROJECT_G20`:
 
@@ -101,7 +101,7 @@ cd .\fall_detection_project\
 2. Run the following command to start the server:
 
 ```bash
-python manage.py runserver
+uv run manage.py runserver
 ```
 ## What to view?
 
