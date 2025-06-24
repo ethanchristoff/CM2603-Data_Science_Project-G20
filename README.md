@@ -1,9 +1,9 @@
 ## Group Members
 | Person No. | IIT ID   | RGU ID  | Student Name                    |
 | ---------- | -------- | ------- | ------------------------------- |
-| 1          | 20221812| 2331419 | Moderage Ethan Christoff PereraWickramage       |
+| 1          | 20221812 | 2331419 | Moderage Ethan Christoff Perera |
 | 2          | 20230903 | 2330903 | Himansa Wathsiluni Jayasuriya   |
-| 3          | 20220950 | 2330973 | Senuli Laknara |
+| 3          | 20220950 | 2330973 | Senuli Laknara Wickramage       |
 | 4          | 20232429 | 2330893 | Mevinu Induwara Gunaratne       |
 
 ## Introduction
