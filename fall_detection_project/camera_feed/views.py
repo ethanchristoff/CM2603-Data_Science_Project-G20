@@ -1,24 +1,25 @@
+import csv
+import os
+import pickle
+import time
+from collections.abc import Generator
+from datetime import datetime
+from typing import Any
+
 import cv2
+import joblib
 import mediapipe as mp
 import numpy as np
-import csv
-import time
-import pickle
-from datetime import datetime
-import joblib
-import os
 import psutil
-from typing import Generator, List, Dict, Any, Tuple, Union
-
 from django.conf import settings
-from django.http import StreamingHttpResponse, JsonResponse, HttpRequest, HttpResponse
-from django.shortcuts import render
 from django.core.cache import cache
+from django.http import HttpRequest, HttpResponse, JsonResponse, StreamingHttpResponse
+from django.shortcuts import render
 
 # --- Constants ---
 PID_FILENAME: str = "process.pid"
 RECORDINGS_DIR_NAME: str = 'recordings'
-VIDEO_EXTENSIONS: Tuple[str, ...] = ('.mp4', '.avi', '.mov')
+VIDEO_EXTENSIONS: tuple[str, ...] = ('.mp4', '.avi', '.mov')
 
 # Constants for gen_frames
 MODEL_STATIC_SUBDIR: str = 'static'
@@ -27,7 +28,7 @@ SCALER_FILENAME: str = 'scaler.pkl'
 MODEL_FILENAME: str = 'knn_model.pkl'
 LOG_FILENAME_FALL_DETECTION: str = 'fall_detection_log.csv'
 
-NON_FACE_LANDMARK_INDICES: List[int] = list(range(11, 33)) # Indices for landmarks excluding face
+NON_FACE_LANDMARK_INDICES: list[int] = list(range(11, 33)) # Indices for landmarks excluding face
 VIDEO_FOURCC_CODEC: str = 'mp4v'
 MIN_FALL_RECORDING_DURATION_SEC: int = 5
 CAMERA_INDEX: int = 0 # Or other appropriate camera index
@@ -40,8 +41,8 @@ POSE_MIN_TRACKING_CONFIDENCE: float = 0.3
 # Drawing specs
 LANDMARK_DRAWING_SPEC = mp.solutions.drawing_utils.DrawingSpec(color=(245, 117, 66), thickness=2, circle_radius=2)
 CONNECTION_DRAWING_SPEC = mp.solutions.drawing_utils.DrawingSpec(color=(245, 66, 230), thickness=2, circle_radius=2)
-BBOX_COLOR: Tuple[int, int, int] = (0, 255, 0) # Green
-TEXT_COLOR: Tuple[int, int, int] = (0, 0, 255) # Red
+BBOX_COLOR: tuple[int, int, int] = (0, 255, 0) # Green
+TEXT_COLOR: tuple[int, int, int] = (0, 0, 255) # Red
 
 
 def get_camera_page(request: HttpRequest) -> HttpResponse:
@@ -60,9 +61,9 @@ def get_camera_page(request: HttpRequest) -> HttpResponse:
 
     if os.path.exists(PID_FILENAME):
         try:
-            with open(PID_FILENAME, "r") as f:
+            with open(PID_FILENAME) as f:
                 pid = int(f.read().strip())
-            
+
             process = psutil.Process(pid)
             process.terminate()  # Gracefully stop the process
             process.wait(timeout=5)  # Wait for process to terminate
@@ -74,7 +75,7 @@ def get_camera_page(request: HttpRequest) -> HttpResponse:
             process.kill()
             process.wait()
             print(f"Killed process with PID: {pid}")
-        except (IOError, ValueError) as e:
+        except (OSError, ValueError) as e:
             print(f"Error reading or parsing PID file: {e}")
         finally:
             if os.path.exists(PID_FILENAME):
@@ -83,15 +84,15 @@ def get_camera_page(request: HttpRequest) -> HttpResponse:
         print("No PID file found. Assuming no controlled process is running.")
 
     recordings_full_dir = os.path.join(settings.MEDIA_ROOT, RECORDINGS_DIR_NAME)
-    
-    video_files: List[str] = []
+
+    video_files: list[str] = []
     if os.path.exists(recordings_full_dir):
         video_files = [
-            f for f in os.listdir(recordings_full_dir) 
+            f for f in os.listdir(recordings_full_dir)
             if f.endswith(VIDEO_EXTENSIONS)
         ]
 
-    context: Dict[str, Any] = {
+    context: dict[str, Any] = {
         'videos': video_files,
         'MEDIA_URL': settings.MEDIA_URL
     }
@@ -121,7 +122,7 @@ def gen_frames() -> Generator[bytes, None, None]:
         print(f"Error: Model or scaler file not found. Searched in {model_base_path}")
         return
     except Exception as e:
-        print(f"Error loading model or scaler: {str(e)}")
+        print(f"Error loading model or scaler: {e!s}")
         return
 
     mp_pose = mp.solutions.pose
@@ -138,10 +139,10 @@ def gen_frames() -> Generator[bytes, None, None]:
 
     log_path = os.path.join(settings.MEDIA_ROOT, LOG_FILENAME_FALL_DETECTION)
 
-    fall_start_time: Union[float, None] = None
+    fall_start_time: float | None = None
     recording: bool = False
-    video_filename: Union[str, None] = None
-    fall_video_writer: Union[cv2.VideoWriter, None] = None
+    video_filename: str | None = None
+    fall_video_writer: cv2.VideoWriter | None = None
     fourcc = cv2.VideoWriter_fourcc(*VIDEO_FOURCC_CODEC)
 
     file_exists = os.path.isfile(log_path)
@@ -150,7 +151,7 @@ def gen_frames() -> Generator[bytes, None, None]:
         with open(log_path, 'a', newline='') as log_file:
             writer = csv.writer(log_file)
             if not file_exists or os.path.getsize(log_path) == 0:
-                writer.writerow(["Timestamp", "Status (1=Fall, 0=NoFall)"]) 
+                writer.writerow(["Timestamp", "Status (1=Fall, 0=NoFall)"])
 
             with mp_pose.Pose(
                 min_detection_confidence=POSE_MIN_DETECTION_CONFIDENCE,
@@ -172,7 +173,7 @@ def gen_frames() -> Generator[bytes, None, None]:
                     if results.pose_landmarks:
                         height, width, _ = image.shape
                         landmarks = results.pose_landmarks.landmark
-                        
+
                         # Use only non-face landmarks for feature extraction
                         filtered_landmarks = [landmarks[i] for i in NON_FACE_LANDMARK_INDICES if i < len(landmarks)]
 
@@ -194,24 +195,24 @@ def gen_frames() -> Generator[bytes, None, None]:
 
                             features_input_scaled = scaler.transform([features_input])
                             prediction = knn_model.predict(features_input_scaled)[0]
-                            
+
                             label = "Falling" if prediction == 1 else "Not Falling"
                             fall_detected = (prediction == 1)
 
                             current_time_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                             writer.writerow([current_time_str, 1 if fall_detected else 0])
-                            log_file.flush() 
+                            log_file.flush()
 
                             cache.set('fall_detected', bool(fall_detected), timeout=10) # Cache status for 10s
 
                             if fall_detected:
-                                if fall_start_time is None: 
+                                if fall_start_time is None:
                                     fall_start_time = time.time()
                                     current_fall_timestamp_str = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
                                     video_filename = os.path.join(recordings_full_dir, f"fall_{current_fall_timestamp_str}.mp4")
                                     fall_video_writer = cv2.VideoWriter(video_filename, fourcc, VIDEO_FPS, (FRAME_WIDTH, FRAME_HEIGHT))
                                     recording = True
-                                
+
                                 if recording and fall_video_writer:
                                     fall_video_writer.write(image)
                             else: # Not falling
@@ -225,7 +226,7 @@ def gen_frames() -> Generator[bytes, None, None]:
                                     elif recording: # fall_duration >= MIN_FALL_RECORDING_DURATION_SEC
                                         print(f"Fall duration {fall_duration:.2f}s. Saving video: {video_filename}")
                                         fall_video_writer.release()
-                                    
+
                                     fall_video_writer = None # Reset writer
                                     fall_start_time = None
                                     recording = False
@@ -236,18 +237,18 @@ def gen_frames() -> Generator[bytes, None, None]:
                                 LANDMARK_DRAWING_SPEC, CONNECTION_DRAWING_SPEC
                             )
                             cv2.rectangle(image, (int(x_min), int(y_min)), (int(x_max), int(y_max)), BBOX_COLOR, 2)
-                        
+
                     cv2.putText(image, label, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, TEXT_COLOR, 2, cv2.LINE_AA)
 
                     ret, buffer = cv2.imencode('.jpg', image)
                     if not ret:
                         print("Failed to encode frame to JPEG.")
                         continue
-                    
+
                     frame_bytes = buffer.tobytes()
                     yield (b'--frame\r\n'
                            b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
-    
+
     except Exception as e:
         print(f"An error occurred in gen_frames: {e}")
     finally:

@@ -1,0 +1,88 @@
+# ruff.toml
+
+# Set the maximum line length, consistent with the 'black' code formatter.
+line-length = 88
+indent-width = 4
+
+# Define the Python version your project targets.
+# Based on your environment, Python 3.12 is a good choice.
+target-version = "py312"
+
+# Exclude common directories, virtual environments, and generated files from linting and formatting.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+    "*/migrations/*.py", # Exclude Django migration files
+]
+
+[lint]
+# Select a broad set of rules for comprehensive checks.
+# See https://docs.astral.sh/ruff/rules/ for a full list of rules.
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # Pyflakes (detects unused imports, variables, etc.)
+    "I",  # isort (import sorting)
+    "N",  # pep8-naming (enforces naming conventions)
+    "D",  # pydocstyle (docstring conventions)
+    "UP", # pyupgrade (helps modernize code)
+    "B",  # flake8-bugbear (finds likely bugs and design problems)
+    "A",  # flake8-builtins (prevents shadowing Python builtins)
+    "C4", # flake8-comprehensions (helps write more idiomatic comprehensions)
+    "SIM",# flake8-simplify (suggests simplifications)
+    "ARG",# flake8-unused-arguments
+    "RUF",# Ruff-specific rules
+]
+
+# Ignore specific rules that can be noisy or conflict with common practices.
+# You can remove rules from this list for stricter checks.
+ignore = [
+    "D203", "D212", "D213", # Conflicts with other pydocstyle conventions.
+    "D100", "D101", "D102", "D103", "D104", "D105", "D107", # Missing docstring errors.
+    "B905", # `zip()` without `strict=`. Can be noisy on older Python versions.
+    "ARG001", # Unused function argument (e.g., in request handlers).
+]
+
+# Allow unused variables that start with an underscore.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[lint.pydocstyle]
+# Use the "google" docstring convention, which is readable and widely used.
+convention = "google"
+
+[lint.isort]
+# Define your project's root directory as a "first-party" module.
+# This helps `isort` sort your local application imports correctly.
+known-first-party = ["fall_detection_project"]
+
+[lint.mccabe]
+# Set the maximum cyclomatic complexity for functions.
+# Functions more complex than this will be flagged.
+max-complexity = 10
+
+[format]
+# Configure the Ruff code formatter, which is a drop-in replacement for Black.
+# Use double quotes for strings.
+quote-style = "double"
+# Use spaces for indentation.
+indent-style = "space"
+# Add a trailing comma to multi-line expressions where possible.
+skip-magic-trailing-comma = false
+line-ending = "auto"

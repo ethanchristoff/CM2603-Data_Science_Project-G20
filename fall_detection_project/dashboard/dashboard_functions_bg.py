@@ -1,16 +1,17 @@
+import atexit
+import csv
+import logging
+import os
+import pickle
+import queue
 import threading
 import time
-import queue
-import numpy as np
 from datetime import datetime
+
 import cv2 as cv
-import mediapipe as mp
-import pickle
 import joblib
-import csv
-import os
-import logging
-import atexit
+import mediapipe as mp
+import numpy as np
 
 # Buffers for each sensor stream (holds tuples of (timestamp, value))
 camera_queue = queue.Queue(maxsize=10)  # Stores last 10 predictions
@@ -82,7 +83,7 @@ def process_camera():
                 x_coords = [lm.x * width for lm in filtered_landmarks]
                 y_coords = [lm.y * height for lm in filtered_landmarks]
                 visibilities = [lm.visibility for lm in filtered_landmarks]
-                
+
                 features_input = np.array([
                     np.mean(x_coords), np.mean(y_coords), np.mean(visibilities),
                     max(x_coords) - min(x_coords), max(y_coords) - min(y_coords)
@@ -91,22 +92,22 @@ def process_camera():
 
                 cam_prediction = cam_knn_model.predict(features_input_scaled)[0]  # 1 = Fall, 0 = Non-Fall
                 label = "Falling" if cam_prediction == 1 else "Not Falling"
-                
+
                 # Draw pose landmarks
                 mp.solutions.drawing_utils.draw_landmarks(
                     frame, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
                     mp.solutions.drawing_utils.DrawingSpec(color=(245, 117, 66), thickness=2, circle_radius=2),
                     mp.solutions.drawing_utils.DrawingSpec(color=(245, 66, 230), thickness=2, circle_radius=2),
                 )
-                
+
                 cv.putText(frame, label, (50, 50), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
-            
+
             timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
             with lock:
                 if camera_queue.full():
                     camera_queue.get()
                 camera_queue.put((timestamp, cam_prediction))
-                
+
                 # Append to log file
                 with open(cam_log_file, "a", newline="") as file:
                     writer = csv.writer(file)
@@ -246,7 +247,7 @@ class SensorSimulation:
 
 def process_accel_gyro():
     logger.info("[DEBUG] Gyro thread started.")
-    
+
     # Paths to your model and scaler
     model_path = os.path.join(BASE_DIR , "dashboard", "models", "accl_gyro", "cnn_sensor_model.pkl")
     scaler_path= os.path.join(BASE_DIR , "dashboard", "models", "accl_gyro", "acc_gyro_scaler.pkl")
@@ -254,7 +255,7 @@ def process_accel_gyro():
 
     # Create sensor simulation
     simulation = SensorSimulation(model_path, scaler_path)
-    
+
     current_scenario_index = 0
     time_in_current_scenario = 0
 
@@ -334,13 +335,13 @@ with open(spo2_log_file, mode='w', newline='') as file:
 def process_spo2():
     while not stop_event.is_set():
         # Simulated Values for sampling and demonstrating, real time data can be inputted here
-        HRV = np.random.uniform(40, 100)  
-        SpO2 = np.random.uniform(85, 100) 
+        HRV = np.random.uniform(40, 100)
+        SpO2 = np.random.uniform(85, 100)
         input_data = np.array([[HRV, SpO2]])
-        
+
         # Preprocess input data
         input_scaled = spo2_scaler.transform(input_data)
-        
+
         # Make prediction
         spo2_prediction = spo2_knn_model.predict(input_scaled)[0]
         timestamp = datetime.now()
@@ -349,12 +350,12 @@ def process_spo2():
             if spo2_queue.full():
                 spo2_queue.get()
             spo2_queue.put((timestamp, spo2_prediction))
-        
+
         # Append to log file
         with open(spo2_log_file, mode='a', newline='') as file:
             writer = csv.writer(file)
             writer.writerow([timestamp.strftime('%Y-%m-%d %H:%M:%S'), f"{HRV:.2f}", f"{SpO2:.2f}", spo2_prediction])
-        
+
         # Wait before next reading
         time.sleep(1)
 
@@ -366,7 +367,7 @@ def fusion_algorithm():
             cam_pred = (datetime.now(), 0)
             gyro_pred = (datetime.now(), 0)
             spo2_pred = (datetime.now(), 0)
-            
+
             if not camera_queue.empty():
                 cam_pred = list(camera_queue.queue)[-1]
             if not gyro_queue.empty():
@@ -417,14 +418,14 @@ if __name__ == "__main__":
         fusion_thread.start()
 
         print("[INFO] All threads started. Press Ctrl+C to stop.")
-        
+
         while True:
             time.sleep(1)
 
     except KeyboardInterrupt:
         print("\n[INFO] Stopping all threads...")
         stop_event.set()
-        
-        time.sleep(2)  
-        
+
+        time.sleep(2)
+
         print("[INFO] All threads stopped. Exiting.")
