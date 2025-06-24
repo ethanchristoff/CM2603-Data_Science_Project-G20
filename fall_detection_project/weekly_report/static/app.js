@@ -362,7 +362,7 @@ async function generatePDF() {
     pdf.setFont("helvetica", "normal");
     pdf.text(`Full Name: John Doe`, margin, currentY);
     currentY += 4;
-    pdf.text(`Date of Birth: 08/15/1955 (66 years)`, margin, currentY);
+    pdf.text(`Date of Birth: 08/15/1955 (70 years)`, margin, currentY);
     currentY += 4;
     pdf.text(`Gender: Male`, margin, currentY);
     currentY += 4;
